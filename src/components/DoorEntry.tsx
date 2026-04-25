@@ -61,32 +61,39 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
 
       {/* Doors container */}
       <div
-        className="relative flex items-center justify-center"
-        style={{ perspective: "1500px", width: "min(90vw, 700px)", height: "min(95vh, 1000px)" }}
+        className="relative flex items-stretch justify-center"
+        style={{ perspective: "1800px", width: "min(92vw, 640px)", height: "min(92vh, 900px)" }}
       >
-        {/* Left door */}
+        {/* Decorative toran (garland) above doors */}
+        <div className="absolute -top-2 left-0 right-0 z-30 flex justify-center pointer-events-none">
+          <div className="flex gap-1 text-2xl md:text-3xl select-none">
+            <span>🌼</span><span>🏵️</span><span>🌼</span><span>🏵️</span><span>🌼</span><span>🏵️</span><span>🌼</span>
+          </div>
+        </div>
+
+        {/* Left door panel */}
         <div
-          className={`absolute top-0 left-0 w-1/2 h-full ${opening ? "door-open-left" : ""}`}
+          className={`relative w-1/2 h-full ${opening ? "door-open-left" : ""}`}
           style={{ transformOrigin: "left center" }}
         >
           <img
             src={doorLeft}
             alt="Traditional Indian carved door, left panel"
-            className="w-full h-full object-cover object-right"
-            style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}
+            className="w-full h-full object-fill block"
+            style={{ filter: "drop-shadow(-4px 20px 30px rgba(0,0,0,0.5))" }}
           />
         </div>
 
-        {/* Right door */}
+        {/* Right door panel */}
         <div
-          className={`absolute top-0 right-0 w-1/2 h-full ${opening ? "door-open-right" : ""}`}
+          className={`relative w-1/2 h-full ${opening ? "door-open-right" : ""}`}
           style={{ transformOrigin: "right center" }}
         >
           <img
             src={doorRight}
             alt="Traditional Indian carved door, right panel"
-            className="w-full h-full object-cover object-left"
-            style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}
+            className="w-full h-full object-fill block"
+            style={{ filter: "drop-shadow(4px 20px 30px rgba(0,0,0,0.5))" }}
           />
         </div>
 

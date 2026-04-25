@@ -141,6 +141,18 @@
 .sway { animation: sway 4s ease-in-out infinite; transform-origin: top center; }
 .fade-up { animation: fade-up 0.9s ease-out forwards; }
 
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.float-gentle { animation: float-gentle 5s ease-in-out infinite; }
+
+@keyframes swing {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.swing { animation: swing 3.5s ease-in-out infinite; transform-origin: top center; }
+
 .text-gold-gradient {
   background: linear-gradient(135deg, oklch(0.78 0.16 80) 0%, oklch(0.55 0.14 65) 50%, oklch(0.78 0.16 80) 100%);
   background-size: 200% 200%;
