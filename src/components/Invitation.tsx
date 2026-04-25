@@ -154,9 +154,9 @@ export function Invitation() {
                 {/* Event Details */}
                 <Reveal delay={900} className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
                   {[
-                    { label: "DATE", value: "12th May, 2026", sub: "Tuesday" },
-                    { label: "TIME", value: "10:30 AM", sub: "Onwards" },
-                    { label: "VENUE", value: "Aarambh Nivas", sub: "42, Lotus Lane, Pune" },
+                    { label: "DATE", value: "3rd May", sub: "Early Morning" },
+                    { label: "TIME", value: "4:30 AM", sub: "Brahma Muhūrta" },
+                    { label: "VENUE", value: "Sri Lakshmi Srinivasa Towers", sub: "Eluru, Andhra Pradesh" },
                   ].map((d) => (
                     <div
                       key={d.label}
@@ -180,15 +180,28 @@ export function Invitation() {
                   ))}
                 </Reveal>
 
+                {/* Full address block */}
+                <Reveal delay={1000} className="mt-8 md:mt-10 max-w-2xl mx-auto">
+                  <p className="font-display text-[10px] sm:text-xs tracking-[0.4em] text-[var(--gold-deep)] mb-3">
+                    ✦ ADDRESS ✦
+                  </p>
+                  <p className="font-body text-sm sm:text-base md:text-lg text-[var(--maroon)] leading-relaxed">
+                    Sri Lakshmi Srinivasa Towers,<br />
+                    Sunkara Vaari Thota, Venkatapuram,<br />
+                    Venna Valli Vaari Peta, Choudimella,<br />
+                    Eluru – 534001, Andhra Pradesh
+                  </p>
+                </Reveal>
+
                 <Reveal delay={1100} className="mt-10 md:mt-12">
                   <p className="font-display text-[10px] sm:text-xs tracking-[0.4em] text-[var(--gold-deep)]">
                     WITH WARM REGARDS
                   </p>
                   <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient mt-3">
-                    The Sharma Family
+                    The Nadiminti Family
                   </p>
                   <p className="font-body italic text-sm md:text-base text-[var(--maroon)]/70 mt-2">
-                    Rajesh &amp; Anjali · with Aarav &amp; Saanvi
+                    Venkata Ramana &amp; Satyavathi
                   </p>
                 </Reveal>
 
