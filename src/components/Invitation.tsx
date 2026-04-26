@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { DoorEntry } from "@/components/DoorEntry";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
-import { Typewriter } from "@/components/Typewriter";
 import { Diya } from "@/components/Diya";
 import { MusicToggle } from "@/components/MusicToggle";
 import { HomamScene } from "@/components/HomamScene";
@@ -10,9 +9,224 @@ import ganesha from "@/assets/ganesha.png";
 import rangoli from "@/assets/rangoli.png";
 import pasupu from "@/assets/pasupu-kumkuma.png";
 
+type Lang = "en" | "te";
+
+interface CardContent {
+  blessing: string;
+  blessingSub: string;
+  title: string;
+  subtitle: string;
+  invite: string;
+  dateLabel: string;
+  dateValue: string;
+  dateSub: string;
+  timeLabel: string;
+  timeValue: string;
+  timeSub: string;
+  venueLabel: string;
+  venueValue: string;
+  venueSub: string;
+  addressHeading: string;
+  addressLines: string[];
+  regards: string;
+  family: string;
+  hosts: string;
+  flipLabel: string;
+}
+
+const EN: CardContent = {
+  blessing: "|| Shrī Gaṇeśāya Namaḥ ||",
+  blessingSub: "With the blessings of Lord Ganesha",
+  title: "GṚHA PRAVEŚA",
+  subtitle: "A Sacred House Warming Ceremony",
+  invite:
+    "With hearts full of gratitude and joy, we humbly invite you and your family to grace our new home with your divine presence and warm blessings on this auspicious occasion.",
+  dateLabel: "DATE",
+  dateValue: "Saturday, 3rd May",
+  dateSub: "Early Morning",
+  timeLabel: "TIME",
+  timeValue: "4:30 AM",
+  timeSub: "Brahma Muhūrta",
+  venueLabel: "VENUE",
+  venueValue: "Sri Lakshmi Srinivasa Towers",
+  venueSub: "Eluru, Andhra Pradesh",
+  addressHeading: "✦ ADDRESS ✦",
+  addressLines: [
+    "Sri Lakshmi Srinivasa Towers,",
+    "Sunkara Vaari Thota, Venkatapuram,",
+    "Venna Valli Vaari Peta, Choudimella,",
+    "Eluru – 534001, Andhra Pradesh",
+  ],
+  regards: "WITH WARM REGARDS",
+  family: "The Nadiminti Family",
+  hosts: "Venkata Ramana & Satyavathi",
+  flipLabel: "తెలుగు",
+};
+
+const TE: CardContent = {
+  blessing: "|| శ్రీ గణేశాయ నమః ||",
+  blessingSub: "శ్రీ గణపతి ఆశీస్సులతో",
+  title: "గృహ ప్రవేశం",
+  subtitle: "పవిత్ర గృహ ప్రవేశ మహోత్సవం",
+  invite:
+    "ఎంతో ఆనందంతో మరియు భక్తి పూర్వకంగా, మా క్రొత్త ఇంటి గృహప్రవేశ శుభ సందర్భమున మీరు మీ కుటుంబ సమేతంగా విచ్చేసి మమ్మల్ని ఆశీర్వదించవలసిందిగా హృదయపూర్వకంగా ఆహ్వానిస్తున్నాము.",
+  dateLabel: "తేదీ",
+  dateValue: "శనివారం, మే 3",
+  dateSub: "తెల్లవారుజామున",
+  timeLabel: "సమయం",
+  timeValue: "4:30 ఉదయం",
+  timeSub: "బ్రహ్మ ముహూర్తం",
+  venueLabel: "వేదిక",
+  venueValue: "శ్రీ లక్ష్మీ శ్రీనివాస టవర్స్",
+  venueSub: "ఏలూరు, ఆంధ్రప్రదేశ్",
+  addressHeading: "✦ చిరునామా ✦",
+  addressLines: [
+    "శ్రీ లక్ష్మీ శ్రీనివాస టవర్స్,",
+    "సుంకర వారి తోట, వెంకటాపురం,",
+    "వెన్నవల్లి వారి పేట, చౌడిమెల్ల,",
+    "ఏలూరు – 534001, ఆంధ్రప్రదేశ్",
+  ],
+  regards: "ప్రేమపూర్వక నమస్కారములతో",
+  family: "నాదిమింటి కుటుంబం",
+  hosts: "వెంకట రమణ & సత్యవతి",
+  flipLabel: "English",
+};
+
+function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
+  const isTe = lang === "te";
+  return (
+    <article
+      className="relative mx-auto rounded-3xl px-5 py-10 sm:p-10 md:p-14 text-center h-full"
+      style={{
+        background: "linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%)",
+        boxShadow: "var(--shadow-card)",
+        border: "1px solid var(--gold)",
+      }}
+    >
+      {/* Layered decorative borders */}
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "1px dashed var(--gold-deep)", opacity: 0.5 }} />
+      <div className="absolute inset-5 rounded-xl pointer-events-none" style={{ border: "1px solid var(--gold)", opacity: 0.3 }} />
+
+      {/* Corner ornaments */}
+      {(["top-2 left-2", "top-2 right-2", "bottom-2 left-2", "bottom-2 right-2"] as const).map((pos) => (
+        <span
+          key={pos}
+          className={`absolute ${pos} text-xl md:text-2xl pointer-events-none`}
+          style={{ color: "var(--gold-deep)", opacity: 0.7 }}
+        >
+          ❋
+        </span>
+      ))}
+
+      {/* Pasupu kumkuma hanging at top */}
+      <div className="relative -mt-20 sm:-mt-24 md:-mt-28 mb-4 flex justify-center">
+        <div className="swing">
+          <img
+            src={pasupu}
+            alt="Pasupu Kumkuma — turmeric and vermilion blessing"
+            className="w-32 sm:w-40 md:w-48 h-auto"
+            style={{ filter: "drop-shadow(0 10px 18px rgba(0,0,0,0.35))" }}
+          />
+        </div>
+      </div>
+
+      {/* Ganesha */}
+      <img src={ganesha} alt="Lord Ganesha" className="mx-auto w-20 sm:w-24 md:w-28" loading="lazy" />
+
+      <p className={`mt-3 ${isTe ? "font-display" : "font-script"} text-2xl sm:text-3xl md:text-4xl text-gold-gradient`}>
+        {c.blessing}
+      </p>
+      <p className="mt-1 font-body italic text-[var(--maroon)]/70 text-xs sm:text-sm md:text-base">
+        {c.blessingSub}
+      </p>
+
+      <div className="my-6 md:my-8 flex items-center justify-center gap-3">
+        <span className="h-px w-12 sm:w-20 md:w-24 bg-[var(--gold-deep)]/40" />
+        <span className="text-[var(--gold-deep)] text-lg">❖</span>
+        <span className="h-px w-12 sm:w-20 md:w-24 bg-[var(--gold-deep)]/40" />
+      </div>
+
+      <h1 className="font-display text-2xl sm:text-3xl md:text-5xl text-[var(--maroon)] tracking-wider">
+        {c.title}
+      </h1>
+      <p className={`${isTe ? "font-display" : "font-script"} text-lg sm:text-xl md:text-3xl mt-2 text-[var(--gold-deep)]`}>
+        {c.subtitle}
+      </p>
+
+      {/* Invitation paragraph — clean readable text, no typewriter */}
+      <p className="mt-6 md:mt-8 max-w-xl mx-auto font-body text-base sm:text-lg md:text-xl text-[var(--maroon)] leading-relaxed">
+        {c.invite}
+      </p>
+
+      {/* Event Details */}
+      <div className="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+        {[
+          { label: c.dateLabel, value: c.dateValue, sub: c.dateSub },
+          { label: c.timeLabel, value: c.timeValue, sub: c.timeSub },
+          { label: c.venueLabel, value: c.venueValue, sub: c.venueSub },
+        ].map((d, i) => (
+          <div
+            key={i}
+            className="rounded-xl p-4 md:p-5 transition-transform hover:scale-105"
+            style={{
+              background: "var(--ivory)",
+              border: "1px solid var(--gold)",
+              boxShadow: "0 8px 20px -10px oklch(0.55 0.14 65 / 0.3)",
+            }}
+          >
+            <p className="font-display text-[10px] sm:text-xs tracking-[0.3em] text-[var(--gold-deep)]">
+              {d.label}
+            </p>
+            <p className={`${isTe ? "font-display" : "font-display"} text-base sm:text-lg md:text-xl mt-2 text-[var(--maroon)] leading-tight`}>
+              {d.value}
+            </p>
+            <p className="font-body italic text-xs sm:text-sm text-[var(--maroon)]/70 mt-1">
+              {d.sub}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Address */}
+      <div className="mt-8 md:mt-10 max-w-2xl mx-auto">
+        <p className="font-display text-[10px] sm:text-xs tracking-[0.4em] text-[var(--gold-deep)] mb-3">
+          {c.addressHeading}
+        </p>
+        <p className="font-body text-sm sm:text-base md:text-lg text-[var(--maroon)] leading-relaxed">
+          {c.addressLines.map((line, i) => (
+            <span key={i}>
+              {line}
+              <br />
+            </span>
+          ))}
+        </p>
+      </div>
+
+      <div className="mt-10 md:mt-12">
+        <p className="font-display text-[10px] sm:text-xs tracking-[0.4em] text-[var(--gold-deep)]">
+          {c.regards}
+        </p>
+        <p className={`${isTe ? "font-display" : "font-script"} text-2xl sm:text-3xl md:text-5xl text-gold-gradient mt-3`}>
+          {c.family}
+        </p>
+        <p className="font-body italic text-sm md:text-base text-[var(--maroon)]/70 mt-2">
+          {c.hosts}
+        </p>
+      </div>
+
+      <div className="mt-10 md:mt-12 flex items-end justify-center gap-5 sm:gap-6 md:gap-10">
+        <Diya size={40} />
+        <Diya size={60} />
+        <Diya size={40} />
+      </div>
+    </article>
+  );
+}
+
 export function Invitation() {
   const [opened, setOpened] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [lang, setLang] = useState<Lang>("en");
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -24,6 +238,8 @@ export function Invitation() {
     document.body.style.overflow = opened ? "auto" : "hidden";
   }, [opened]);
 
+  const isFlipped = lang === "te";
+
   return (
     <div className="relative min-h-screen w-full">
       <DoorEntry onOpen={() => setOpened(true)} />
@@ -33,7 +249,6 @@ export function Invitation() {
           <Particles count={30} />
           <MusicToggle />
 
-          {/* Parallax background rangoli */}
           <div
             className="fixed inset-0 pointer-events-none -z-10 flex items-center justify-center opacity-[0.07]"
             style={{ transform: `translateY(${scrollY * 0.2}px)` }}
@@ -74,144 +289,41 @@ export function Invitation() {
             </div>
           </section>
 
-          {/* INVITATION CARD */}
-          <section className="min-h-screen flex items-center justify-center px-3 sm:px-4 py-16 md:py-20 relative">
-            <Reveal className="w-full max-w-3xl">
-              <article
-                className="relative mx-auto rounded-3xl px-5 py-8 sm:p-10 md:p-16 text-center"
-                style={{
-                  background: "linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%)",
-                  boxShadow: "var(--shadow-card)",
-                  border: "1px solid var(--gold)",
-                }}
+          {/* INVITATION CARD with flip */}
+          <section className="min-h-screen flex flex-col items-center justify-center px-3 sm:px-4 py-16 md:py-20 relative">
+            {/* Language toggle */}
+            <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md">
+              <button
+                onClick={() => setLang("en")}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
+                  lang === "en"
+                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                }`}
               >
-                {/* Layered decorative borders */}
-                <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "1px dashed var(--gold-deep)", opacity: 0.5 }} />
-                <div className="absolute inset-5 rounded-xl pointer-events-none" style={{ border: "1px solid var(--gold)", opacity: 0.3 }} />
+                English
+              </button>
+              <button
+                onClick={() => setLang("te")}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
+                  lang === "te"
+                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                }`}
+              >
+                తెలుగు
+              </button>
+            </div>
 
-                {/* Corner ornaments — diagonal motifs */}
-                {(["top-2 left-2", "top-2 right-2", "bottom-2 left-2", "bottom-2 right-2"] as const).map((pos) => (
-                  <span
-                    key={pos}
-                    className={`absolute ${pos} text-xl md:text-2xl pointer-events-none`}
-                    style={{ color: "var(--gold-deep)", opacity: 0.7 }}
-                  >
-                    ❋
-                  </span>
-                ))}
-
-                {/* PASUPU KUMKUMA hanging at top of card */}
-                <div className="relative -mt-16 sm:-mt-20 md:-mt-24 mb-2 flex justify-center">
-                  <div className="swing">
-                    <img
-                      src={pasupu}
-                      alt="Pasupu Kumkuma — traditional turmeric and vermilion blessing"
-                      className="w-28 sm:w-36 md:w-44 h-auto drop-shadow-lg"
-                      style={{ filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.25))" }}
-                    />
-                  </div>
+            <Reveal className="w-full max-w-3xl flip-perspective">
+              <div className={`flip-inner ${isFlipped ? "is-flipped" : ""}`}>
+                <div className="flip-face">
+                  <CardFace c={EN} lang="en" />
                 </div>
-
-                {/* Ganesha */}
-                <Reveal delay={100}>
-                  <img src={ganesha} alt="Lord Ganesha blessing" className="mx-auto w-24 sm:w-28 md:w-36" loading="lazy" />
-                </Reveal>
-
-                <Reveal delay={300} className="mt-2">
-                  <p className="font-script text-2xl sm:text-3xl md:text-4xl text-gold-gradient">
-                    || Shrī Gaṇeśāya Namaḥ ||
-                  </p>
-                  <p className="mt-2 font-body italic text-[var(--maroon)]/70 text-xs sm:text-sm md:text-base">
-                    With the blessings of Lord Ganesha
-                  </p>
-                </Reveal>
-
-                {/* Divider */}
-                <Reveal delay={400} className="my-6 md:my-8 flex items-center justify-center gap-3">
-                  <span className="h-px w-12 sm:w-20 md:w-24 bg-[var(--gold-deep)]/40" />
-                  <span className="text-[var(--gold-deep)] text-lg">❖</span>
-                  <span className="h-px w-12 sm:w-20 md:w-24 bg-[var(--gold-deep)]/40" />
-                </Reveal>
-
-                <Reveal delay={500}>
-                  <h1 className="font-display text-2xl sm:text-3xl md:text-5xl text-[var(--maroon)] tracking-wider">
-                    GṚHA PRAVEŚA
-                  </h1>
-                  <p className="font-script text-xl sm:text-2xl md:text-3xl mt-2 text-[var(--gold-deep)]">
-                    A Sacred House Warming
-                  </p>
-                </Reveal>
-
-                <Reveal delay={700} className="mt-6 md:mt-8 max-w-xl mx-auto">
-                  <p className="font-body text-base sm:text-lg md:text-xl text-[var(--maroon)] leading-relaxed min-h-[8rem]">
-                    <Typewriter
-                      text="With hearts full of gratitude and joy, we humbly invite you to grace our new home with your divine presence and warm blessings on this auspicious occasion."
-                      speed={35}
-                    />
-                  </p>
-                </Reveal>
-
-                {/* Event Details */}
-                <Reveal delay={900} className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                  {[
-                    { label: "DATE", value: "3rd May", sub: "Early Morning" },
-                    { label: "TIME", value: "4:30 AM", sub: "Brahma Muhūrta" },
-                    { label: "VENUE", value: "Sri Lakshmi Srinivasa Towers", sub: "Eluru, Andhra Pradesh" },
-                  ].map((d) => (
-                    <div
-                      key={d.label}
-                      className="rounded-xl p-4 md:p-5 transition-transform hover:scale-105"
-                      style={{
-                        background: "var(--ivory)",
-                        border: "1px solid var(--gold)",
-                        boxShadow: "0 8px 20px -10px oklch(0.55 0.14 65 / 0.3)",
-                      }}
-                    >
-                      <p className="font-display text-[10px] sm:text-xs tracking-[0.3em] text-[var(--gold-deep)]">
-                        {d.label}
-                      </p>
-                      <p className="font-display text-lg sm:text-xl md:text-2xl mt-2 text-[var(--maroon)]">
-                        {d.value}
-                      </p>
-                      <p className="font-body italic text-xs sm:text-sm text-[var(--maroon)]/70 mt-1">
-                        {d.sub}
-                      </p>
-                    </div>
-                  ))}
-                </Reveal>
-
-                {/* Full address block */}
-                <Reveal delay={1000} className="mt-8 md:mt-10 max-w-2xl mx-auto">
-                  <p className="font-display text-[10px] sm:text-xs tracking-[0.4em] text-[var(--gold-deep)] mb-3">
-                    ✦ ADDRESS ✦
-                  </p>
-                  <p className="font-body text-sm sm:text-base md:text-lg text-[var(--maroon)] leading-relaxed">
-                    Sri Lakshmi Srinivasa Towers,<br />
-                    Sunkara Vaari Thota, Venkatapuram,<br />
-                    Venna Valli Vaari Peta, Choudimella,<br />
-                    Eluru – 534001, Andhra Pradesh
-                  </p>
-                </Reveal>
-
-                <Reveal delay={1100} className="mt-10 md:mt-12">
-                  <p className="font-display text-[10px] sm:text-xs tracking-[0.4em] text-[var(--gold-deep)]">
-                    WITH WARM REGARDS
-                  </p>
-                  <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient mt-3">
-                    The Nadiminti Family
-                  </p>
-                  <p className="font-body italic text-sm md:text-base text-[var(--maroon)]/70 mt-2">
-                    Venkata Ramana &amp; Satyavathi
-                  </p>
-                </Reveal>
-
-                {/* Bottom diyas row */}
-                <Reveal delay={1300} className="mt-10 md:mt-12 flex items-end justify-center gap-5 sm:gap-6 md:gap-10">
-                  <Diya size={40} />
-                  <Diya size={60} />
-                  <Diya size={40} />
-                </Reveal>
-              </article>
+                <div className="flip-face flip-back">
+                  <CardFace c={TE} lang="te" />
+                </div>
+              </div>
             </Reveal>
           </section>
 
@@ -232,8 +344,7 @@ export function Invitation() {
 
             <Reveal delay={400} className="mt-12 md:mt-16 max-w-2xl mx-auto text-center px-4">
               <p className="font-body italic text-base sm:text-lg md:text-xl text-[var(--maroon)] leading-relaxed">
-                "Vāstu doṣa nivāraṇāya, sarva maṅgala dāyakāya — may this home be blessed with
-                peace, prosperity, and the laughter of loved ones."
+                "May this home be blessed with peace, prosperity, and the laughter of loved ones."
               </p>
             </Reveal>
           </section>

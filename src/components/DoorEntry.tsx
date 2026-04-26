@@ -59,13 +59,22 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 overflow-hidden"
+      className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center"
       style={{
-        background: "#0a0604",
+        background: "radial-gradient(ellipse at center, #1a0e06 0%, #060302 70%, #000 100%)",
         transition: "opacity 0.8s ease",
         opacity: opening ? (hidden ? 0 : 1) : 1,
       }}
     >
+      {/* Ambient floor glow */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-32 rounded-[50%] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, oklch(0.55 0.14 65 / 0.4), transparent 70%)",
+          filter: "blur(20px)",
+        }}
+      />
+
       {/* Divine light burst behind doors */}
       {opening && (
         <div
@@ -74,12 +83,26 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
         />
       )}
 
-      {/* Doors fill the FULL viewport — no gap, no border */}
+      {/* Doors — centered, full height, constrained width like a real doorway */}
       <div
-        className="absolute inset-0 flex items-stretch"
-        style={{ perspective: "2400px" }}
+        className="relative h-full flex items-stretch"
+        style={{
+          perspective: "2400px",
+          width: "min(680px, 92vw)",
+          filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.8))",
+        }}
       >
-        {/* Left door — shows left half of the full image */}
+        {/* Door frame / arch backdrop */}
+        <div
+          className="absolute -inset-x-4 -inset-y-2 pointer-events-none rounded-t-[60px]"
+          style={{
+            background: "linear-gradient(180deg, #2a1608 0%, #1a0e06 100%)",
+            border: "6px solid #4a2c10",
+            boxShadow: "inset 0 0 40px rgba(0,0,0,0.8)",
+          }}
+        />
+
+        {/* Left door */}
         <div
           className={`relative w-1/2 h-full overflow-hidden ${opening ? "door-open-left" : ""}`}
           style={{
@@ -88,10 +111,10 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
             backgroundSize: "200% 100%",
             backgroundPosition: "left center",
             backgroundRepeat: "no-repeat",
-            boxShadow: opening ? "none" : "inset -4px 0 12px rgba(0,0,0,0.5)",
+            boxShadow: opening ? "none" : "inset -6px 0 18px rgba(0,0,0,0.7)",
           }}
         />
-        {/* Right door — shows right half of the full image */}
+        {/* Right door */}
         <div
           className={`relative w-1/2 h-full overflow-hidden ${opening ? "door-open-right" : ""}`}
           style={{
@@ -100,7 +123,7 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
             backgroundSize: "200% 100%",
             backgroundPosition: "right center",
             backgroundRepeat: "no-repeat",
-            boxShadow: opening ? "none" : "inset 4px 0 12px rgba(0,0,0,0.5)",
+            boxShadow: opening ? "none" : "inset 6px 0 18px rgba(0,0,0,0.7)",
           }}
         />
       </div>
