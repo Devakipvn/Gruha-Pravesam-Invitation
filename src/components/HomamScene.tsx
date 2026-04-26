@@ -155,16 +155,17 @@ function AnimatedHomam() {
 export function HomamScene() {
   return (
     <div className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-end px-4">
-      {/* LEFT: couple + animated homam */}
+      {/* LEFT: couple + animated homam (kund placed between them) */}
       <div className="relative flex flex-col items-center">
-        <div className="relative w-full max-w-md flex flex-col items-center">
+        <div className="relative w-full max-w-md">
           <img
             src={couple}
             alt="Husband and wife performing the homam ceremony"
             className="w-full h-auto relative z-10"
             loading="lazy"
           />
-          <div className="relative -mt-12 sm:-mt-16 md:-mt-20 z-20 w-56 sm:w-64 md:w-72">
+          {/* 3-tier havan kund positioned between the couple */}
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-20 w-40 sm:w-48 md:w-56">
             <AnimatedHomam />
           </div>
         </div>

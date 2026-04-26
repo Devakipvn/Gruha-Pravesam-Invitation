@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DoorEntry } from "@/components/DoorEntry";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
-import { Diya } from "@/components/Diya";
+
 import { MusicToggle } from "@/components/MusicToggle";
 import { HomamScene } from "@/components/HomamScene";
 import ganesha from "@/assets/ganesha.png";
@@ -214,10 +214,11 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         </p>
       </div>
 
-      <div className="mt-10 md:mt-12 flex items-end justify-center gap-5 sm:gap-6 md:gap-10">
-        <Diya size={40} />
-        <Diya size={60} />
-        <Diya size={40} />
+      {/* Closing flourish */}
+      <div className="mt-10 md:mt-12 flex items-center justify-center gap-3">
+        <span className="h-px w-16 sm:w-24 bg-[var(--gold-deep)]/40" />
+        <span className="text-[var(--gold-deep)] text-lg">❖</span>
+        <span className="h-px w-16 sm:w-24 bg-[var(--gold-deep)]/40" />
       </div>
     </article>
   );
