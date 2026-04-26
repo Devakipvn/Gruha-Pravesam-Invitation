@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { DoorEntry } from "@/components/DoorEntry";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
+import { Typewriter } from "@/components/Typewriter";
 
 import { MusicToggle } from "@/components/MusicToggle";
 import { HomamScene } from "@/components/HomamScene";
@@ -127,16 +128,14 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         </span>
       ))}
 
-      {/* Pasupu kumkuma hanging at top */}
-      <div className="relative -mt-24 sm:-mt-28 md:-mt-32 mb-6 flex justify-center">
-        <div className="swing">
-          <img
-            src={pasupu}
-            alt="Pasupu Kumkuma — turmeric and vermilion blessing"
-            className="w-32 sm:w-40 md:w-48 h-auto"
-            style={{ filter: "drop-shadow(0 12px 22px rgba(0,0,0,0.35))" }}
-          />
-        </div>
+      {/* Pasupu kumkuma at top, fully inside card */}
+      <div className="mb-4 flex justify-center">
+        <img
+          src={pasupu}
+          alt="Pasupu Kumkuma — turmeric and vermilion blessing"
+          className="w-28 sm:w-32 md:w-36 h-auto object-contain"
+          style={{ filter: "drop-shadow(0 8px 18px rgba(0,0,0,0.18))" }}
+        />
       </div>
 
       {/* Ganesha */}
@@ -180,12 +179,12 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         {c.subtitle}
       </p>
 
-      {/* Invitation paragraph */}
+      {/* Invitation paragraph — typewriter on scroll */}
       <p
-        className={`mt-8 md:mt-10 max-w-xl mx-auto ${teFont} text-base sm:text-lg md:text-xl text-[var(--maroon)]/90 leading-[1.85]`}
+        className={`mt-8 md:mt-10 max-w-xl mx-auto ${teFont} text-base sm:text-lg md:text-xl text-[var(--maroon)]/90 leading-[1.85] min-h-[12em]`}
         style={!isTe ? { fontFamily: "var(--font-body)" } : undefined}
       >
-        {c.invite}
+        <Typewriter key={`${lang}-invite`} text={c.invite} speed={70} />
       </p>
 
       {/* Event Details */}
