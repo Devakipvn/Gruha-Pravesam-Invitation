@@ -179,12 +179,12 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         {c.subtitle}
       </p>
 
-      {/* Invitation paragraph */}
+      {/* Invitation paragraph — typewriter on scroll */}
       <p
-        className={`mt-8 md:mt-10 max-w-xl mx-auto ${teFont} text-base sm:text-lg md:text-xl text-[var(--maroon)]/90 leading-[1.85]`}
+        className={`mt-8 md:mt-10 max-w-xl mx-auto ${teFont} text-base sm:text-lg md:text-xl text-[var(--maroon)]/90 leading-[1.85] min-h-[12em]`}
         style={!isTe ? { fontFamily: "var(--font-body)" } : undefined}
       >
-        {c.invite}
+        <Typewriter key={`${lang}-invite`} text={c.invite} speed={70} />
       </p>
 
       {/* Event Details */}
