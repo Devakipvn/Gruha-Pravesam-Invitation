@@ -22,7 +22,7 @@ export function Typewriter({ text, speed = 75, className = "", startDelay = 0 }:
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.6 }
     );
     obs.observe(ref.current);
     return () => obs.disconnect();
