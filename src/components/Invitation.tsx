@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DoorEntry } from "@/components/DoorEntry";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
-import { Diya } from "@/components/Diya";
+
 import { MusicToggle } from "@/components/MusicToggle";
 import { HomamScene } from "@/components/HomamScene";
 import ganesha from "@/assets/ganesha.png";
