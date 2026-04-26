@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Noto+Serif+Telugu:wght@400;500;600;700&display=swap');
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -32,9 +32,10 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
 
-  --font-display: 'Cinzel', serif;
+  --font-display: 'Cinzel Decorative', serif;
   --font-body: 'Cormorant Garamond', serif;
-  --font-script: 'Tangerine', cursive;
+  --font-script: 'Great Vibes', cursive;
+  --font-telugu: 'Noto Serif Telugu', serif;
 }
 
 :root {
@@ -215,4 +216,25 @@
     inset 0 0 0 7px var(--gold-deep),
     inset 0 0 0 14px var(--ivory),
     inset 0 0 0 15px var(--gold);
+}
+
+/* Telugu font helper */
+.font-telugu { font-family: var(--font-telugu); }
+
+/* Decorative card divider */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--gold-deep);
+}
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  opacity: 0.6;
 }
