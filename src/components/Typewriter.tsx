@@ -7,7 +7,7 @@ interface TypewriterProps {
   startDelay?: number;
 }
 
-export function Typewriter({ text, speed = 45, className = "", startDelay = 0 }: TypewriterProps) {
+export function Typewriter({ text, speed = 75, className = "", startDelay = 0 }: TypewriterProps) {
   const [displayed, setDisplayed] = useState("");
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
