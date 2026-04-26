@@ -179,13 +179,20 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         {c.subtitle}
       </p>
 
-      {/* Invitation paragraph — typewriter on scroll */}
-      <p
-        className={`mt-8 md:mt-10 max-w-xl mx-auto ${teFont} text-base sm:text-lg md:text-xl text-[var(--maroon)]/90 leading-[1.85] min-h-[12em]`}
+      {/* Invitation paragraph — typewriter on scroll, full text always visible */}
+      <div
+        className={`mt-8 md:mt-10 max-w-xl mx-auto ${teFont} text-base sm:text-lg md:text-xl text-[var(--maroon)]/90 leading-[1.95] relative`}
         style={!isTe ? { fontFamily: "var(--font-body)" } : undefined}
       >
-        <Typewriter key={`${lang}-invite`} text={c.invite} speed={70} />
-      </p>
+        {/* Invisible ghost text reserves the exact full height so nothing clips */}
+        <p aria-hidden className="invisible whitespace-pre-wrap m-0">
+          {c.invite}
+        </p>
+        {/* Animated text overlays the reserved space */}
+        <p className="absolute inset-0 m-0 whitespace-pre-wrap">
+          <Typewriter key={`${lang}-invite`} text={c.invite} speed={55} />
+        </p>
+      </div>
 
       {/* Event Details */}
       <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
