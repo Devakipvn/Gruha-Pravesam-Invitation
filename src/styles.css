@@ -217,3 +217,24 @@
     inset 0 0 0 14px var(--ivory),
     inset 0 0 0 15px var(--gold);
 }
+
+/* Telugu font helper */
+.font-telugu { font-family: var(--font-telugu); }
+
+/* Decorative card divider */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--gold-deep);
+}
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  opacity: 0.6;
+}
