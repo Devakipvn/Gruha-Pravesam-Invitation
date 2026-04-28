@@ -95,16 +95,16 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
 
       {/* Doors — centered, full height, constrained width like a real doorway */}
       <div
-        className="relative h-full flex items-stretch"
+        className="relative h-[88vh] sm:h-full flex items-stretch"
         style={{
           perspective: "2400px",
-          width: "min(680px, 92vw)",
+          width: "min(680px, 96vw)",
           filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.8))",
         }}
       >
         {/* Door frame / arch backdrop */}
         <div
-          className="absolute -inset-x-4 -inset-y-2 pointer-events-none rounded-t-[60px]"
+          className="absolute -inset-x-2 sm:-inset-x-4 -inset-y-2 pointer-events-none rounded-t-[40px] sm:rounded-t-[60px]"
           style={{
             background: "linear-gradient(180deg, #2a1608 0%, #1a0e06 100%)",
             border: "6px solid #4a2c10",
