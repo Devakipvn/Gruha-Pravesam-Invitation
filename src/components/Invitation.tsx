@@ -306,23 +306,23 @@ export function Invitation() {
           </div>
 
           {/* HERO welcome */}
-          <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center relative">
+          <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
               <p className="font-script text-5xl sm:text-6xl md:text-8xl text-gold-gradient leading-none">
                 Gṛha Praveśa
               </p>
-              <p className="font-display tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mt-3 text-[var(--gold-deep)]">
+              <p className="font-display tracking-[0.25em] sm:tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mt-3 text-[var(--gold-deep)]">
                 HOUSE WARMING CEREMONY
               </p>
               <div className="mt-8 flex items-center justify-center gap-3">
-                <span className="h-px w-16 sm:w-24 bg-[var(--gold-deep)]/50" />
+                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
                 <span className="text-[var(--gold-deep)] text-xl">❖</span>
-                <span className="h-px w-16 sm:w-24 bg-[var(--gold-deep)]/50" />
+                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
               </div>
               <p className="font-script text-4xl sm:text-5xl md:text-6xl text-gold-gradient leading-none mt-6">
                 Welcome
               </p>
-              <p className="mt-6 font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
+              <p className="mt-6 font-display tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
                 ✨ SCROLL TO SEE THE INVITATION ✨
               </p>
             </div>
