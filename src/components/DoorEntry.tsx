@@ -61,17 +61,27 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
     <div
       className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center"
       style={{
-        background: "radial-gradient(ellipse at center, #1a0e06 0%, #060302 70%, #000 100%)",
+        background:
+          "radial-gradient(ellipse at 50% 30%, oklch(0.55 0.18 55) 0%, oklch(0.38 0.16 40) 35%, oklch(0.22 0.10 35) 70%, oklch(0.12 0.06 30) 100%)",
         transition: "opacity 0.8s ease",
         opacity: opening ? (hidden ? 0 : 1) : 1,
       }}
     >
+      {/* Decorative warm vignette + sparkle overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 15% 20%, oklch(0.85 0.16 75 / 0.18), transparent 35%), radial-gradient(circle at 85% 25%, oklch(0.85 0.16 75 / 0.15), transparent 35%), radial-gradient(circle at 50% 90%, oklch(0.55 0.18 50 / 0.35), transparent 55%)",
+        }}
+      />
+
       {/* Ambient floor glow */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-32 rounded-[50%] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, oklch(0.55 0.14 65 / 0.4), transparent 70%)",
-          filter: "blur(20px)",
+          background: "radial-gradient(ellipse at center, oklch(0.85 0.18 75 / 0.55), transparent 70%)",
+          filter: "blur(24px)",
         }}
       />
 
