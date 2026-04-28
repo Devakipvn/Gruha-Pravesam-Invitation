@@ -306,7 +306,7 @@ export function Invitation() {
           </div>
 
           {/* HERO welcome */}
-          <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-center relative">
+          <section className="min-h-[88vh] sm:min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-0 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
               <p className="font-script text-5xl sm:text-6xl md:text-8xl text-gold-gradient leading-none">
                 Gṛha Praveśa
@@ -314,20 +314,20 @@ export function Invitation() {
               <p className="font-display tracking-[0.25em] sm:tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mt-3 text-[var(--gold-deep)]">
                 HOUSE WARMING CEREMONY
               </p>
-              <div className="mt-8 flex items-center justify-center gap-3">
+              <div className="mt-6 sm:mt-8 flex items-center justify-center gap-3">
                 <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
                 <span className="text-[var(--gold-deep)] text-xl">❖</span>
                 <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
               </div>
-              <p className="font-script text-4xl sm:text-5xl md:text-6xl text-gold-gradient leading-none mt-6">
+              <p className="font-script text-4xl sm:text-5xl md:text-6xl text-gold-gradient leading-none mt-5 sm:mt-6">
                 Welcome
               </p>
-              <p className="mt-6 font-display tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
+              <p className="mt-5 sm:mt-6 font-display tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
                 ✨ SCROLL TO SEE THE INVITATION ✨
               </p>
             </div>
             <div
-              className="absolute bottom-12 flex flex-col items-center gap-2 scroll-bounce"
+              className="absolute bottom-6 sm:bottom-12 flex flex-col items-center gap-2 scroll-bounce"
               style={{ color: "var(--gold-deep)" }}
             >
               <span className="text-2xl">📜</span>
@@ -339,7 +339,7 @@ export function Invitation() {
           </section>
 
           {/* INVITATION CARD with flip */}
-          <section className="min-h-screen flex flex-col items-center justify-center px-3 sm:px-4 py-16 md:py-20 relative">
+          <section className="min-h-screen flex flex-col items-center justify-start sm:justify-center px-3 sm:px-4 pt-8 pb-10 sm:py-16 md:py-20 relative">
             {/* Language toggle */}
             <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md">
               <button
