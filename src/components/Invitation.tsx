@@ -99,7 +99,7 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
   return (
     <article
-      className="relative mx-auto rounded-[2rem] px-6 py-12 sm:px-12 sm:py-14 md:px-16 md:py-16 text-center h-full overflow-hidden"
+      className="relative mx-auto rounded-[1.25rem] sm:rounded-[2rem] px-4 py-10 sm:px-12 sm:py-14 md:px-16 md:py-16 text-center h-full overflow-hidden"
       style={{
         background:
           "radial-gradient(ellipse at top, var(--ivory) 0%, var(--cream) 70%, oklch(0.90 0.045 75) 100%)",
@@ -163,10 +163,10 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
       {/* Title */}
       <h1
-        className={`${teFont} text-3xl sm:text-4xl md:text-5xl text-[var(--maroon)]`}
+        className={`${teFont} text-2xl sm:text-4xl md:text-5xl text-[var(--maroon)] break-words`}
         style={
           !isTe
-            ? { fontFamily: "var(--font-display)", letterSpacing: "0.18em", fontWeight: 700 }
+            ? { fontFamily: "var(--font-display)", letterSpacing: "0.12em", fontWeight: 700 }
             : { fontWeight: 700, letterSpacing: "0.04em" }
         }
       >
@@ -232,7 +232,7 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
       {/* Address */}
       <div className="mt-10 md:mt-12 max-w-2xl mx-auto">
         <p
-          className="font-body text-[10px] sm:text-xs tracking-[0.5em] text-[var(--gold-deep)] mb-4 uppercase"
+          className="font-body text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] text-[var(--gold-deep)] mb-4 uppercase"
           style={{ fontWeight: 600 }}
         >
           {c.addressHeading}
@@ -306,23 +306,23 @@ export function Invitation() {
           </div>
 
           {/* HERO welcome */}
-          <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center relative">
+          <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
               <p className="font-script text-5xl sm:text-6xl md:text-8xl text-gold-gradient leading-none">
                 Gṛha Praveśa
               </p>
-              <p className="font-display tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mt-3 text-[var(--gold-deep)]">
+              <p className="font-display tracking-[0.25em] sm:tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mt-3 text-[var(--gold-deep)]">
                 HOUSE WARMING CEREMONY
               </p>
               <div className="mt-8 flex items-center justify-center gap-3">
-                <span className="h-px w-16 sm:w-24 bg-[var(--gold-deep)]/50" />
+                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
                 <span className="text-[var(--gold-deep)] text-xl">❖</span>
-                <span className="h-px w-16 sm:w-24 bg-[var(--gold-deep)]/50" />
+                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
               </div>
               <p className="font-script text-4xl sm:text-5xl md:text-6xl text-gold-gradient leading-none mt-6">
                 Welcome
               </p>
-              <p className="mt-6 font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
+              <p className="mt-6 font-display tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
                 ✨ SCROLL TO SEE THE INVITATION ✨
               </p>
             </div>

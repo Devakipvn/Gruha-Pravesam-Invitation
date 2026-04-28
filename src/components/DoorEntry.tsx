@@ -95,16 +95,16 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
 
       {/* Doors — centered, full height, constrained width like a real doorway */}
       <div
-        className="relative h-full flex items-stretch"
+        className="relative h-[88vh] sm:h-full flex items-stretch"
         style={{
           perspective: "2400px",
-          width: "min(680px, 92vw)",
+          width: "min(680px, 96vw)",
           filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.8))",
         }}
       >
         {/* Door frame / arch backdrop */}
         <div
-          className="absolute -inset-x-4 -inset-y-2 pointer-events-none rounded-t-[60px]"
+          className="absolute -inset-x-2 sm:-inset-x-4 -inset-y-2 pointer-events-none rounded-t-[40px] sm:rounded-t-[60px]"
           style={{
             background: "linear-gradient(180deg, #2a1608 0%, #1a0e06 100%)",
             border: "6px solid #4a2c10",
@@ -149,12 +149,12 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
             <div
               className="relative pulse-glow rounded-full"
               style={{
-                width: 110,
-                height: 130,
+                width: "clamp(80px, 22vw, 110px)",
+                height: "clamp(95px, 26vw, 130px)",
                 filter: "drop-shadow(0 6px 14px rgba(0,0,0,0.7))",
               }}
             >
-              <svg viewBox="0 0 120 140" width="110" height="130" aria-hidden>
+              <svg viewBox="0 0 120 140" width="100%" height="100%" aria-hidden>
                 <defs>
                   <radialGradient id="brass" cx="50%" cy="40%" r="60%">
                     <stop offset="0%" stopColor="#fff3b0" />

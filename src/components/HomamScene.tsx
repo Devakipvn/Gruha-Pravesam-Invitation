@@ -154,7 +154,7 @@ function AnimatedHomam() {
 
 export function HomamScene() {
   return (
-    <div className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-end px-4">
+    <div className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-12 items-end px-3 sm:px-4">
       {/* LEFT: couple + animated homam (kund placed between them) */}
       <div className="relative flex flex-col items-center">
         <div className="relative w-full max-w-md">
