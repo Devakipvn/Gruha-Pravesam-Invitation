@@ -99,7 +99,7 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
   return (
     <article
-      className="relative mx-auto rounded-[2rem] px-6 py-12 sm:px-12 sm:py-14 md:px-16 md:py-16 text-center h-full overflow-hidden"
+      className="relative mx-auto rounded-[1.25rem] sm:rounded-[2rem] px-4 py-10 sm:px-12 sm:py-14 md:px-16 md:py-16 text-center h-full overflow-hidden"
       style={{
         background:
           "radial-gradient(ellipse at top, var(--ivory) 0%, var(--cream) 70%, oklch(0.90 0.045 75) 100%)",
