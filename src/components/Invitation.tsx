@@ -295,7 +295,7 @@ export function Invitation() {
 
       {opened && (
         <>
-          <Particles count={30} />
+          <Particles count={22} />
           <MusicToggle />
 
           <div
