@@ -149,12 +149,12 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
             <div
               className="relative pulse-glow rounded-full"
               style={{
-                width: 110,
-                height: 130,
+                width: "clamp(80px, 22vw, 110px)",
+                height: "clamp(95px, 26vw, 130px)",
                 filter: "drop-shadow(0 6px 14px rgba(0,0,0,0.7))",
               }}
             >
-              <svg viewBox="0 0 120 140" width="110" height="130" aria-hidden>
+              <svg viewBox="0 0 120 140" width="100%" height="100%" aria-hidden>
                 <defs>
                   <radialGradient id="brass" cx="50%" cy="40%" r="60%">
                     <stop offset="0%" stopColor="#fff3b0" />
