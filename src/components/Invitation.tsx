@@ -377,12 +377,12 @@ export function Invitation() {
           </section>
 
           {/* HOMAM + COW SCENE */}
-          <section className="relative py-16 md:py-20 px-2 sm:px-4 overflow-hidden">
-            <Reveal className="max-w-5xl mx-auto text-center mb-10 md:mb-14">
-              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient">
+          <section className="relative pt-24 md:pt-32 pb-16 md:pb-20 px-2 sm:px-4 overflow-hidden">
+            <Reveal className="max-w-5xl mx-auto text-center mb-10 md:mb-14 pt-4">
+              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-[1.4] pb-2">
                 Pavitra Saṅskāra
               </p>
-              <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)] mt-2">
+              <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)] mt-3">
                 THE SACRED CEREMONY
               </p>
             </Reveal>
