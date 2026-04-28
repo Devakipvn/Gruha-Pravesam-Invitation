@@ -95,10 +95,10 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
 
       {/* Doors — centered, full height, constrained width like a real doorway */}
       <div
-        className="relative h-[88vh] sm:h-full flex items-stretch"
+        className="relative h-[92vh] sm:h-full flex items-stretch"
         style={{
           perspective: "2400px",
-          width: "min(680px, 96vw)",
+          width: "min(680px, 100vw)",
           filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.8))",
         }}
       >
