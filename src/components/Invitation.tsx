@@ -232,7 +232,7 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
       {/* Address */}
       <div className="mt-10 md:mt-12 max-w-2xl mx-auto">
         <p
-          className="font-body text-[10px] sm:text-xs tracking-[0.5em] text-[var(--gold-deep)] mb-4 uppercase"
+          className="font-body text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] text-[var(--gold-deep)] mb-4 uppercase"
           style={{ fontWeight: 600 }}
         >
           {c.addressHeading}
