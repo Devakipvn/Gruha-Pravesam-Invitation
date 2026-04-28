@@ -61,7 +61,8 @@ export function DoorEntry({ onOpen }: DoorEntryProps) {
     <div
       className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center"
       style={{
-        background: "radial-gradient(ellipse at center, #1a0e06 0%, #060302 70%, #000 100%)",
+        background:
+          "radial-gradient(ellipse at 50% 30%, oklch(0.55 0.18 55) 0%, oklch(0.38 0.16 40) 35%, oklch(0.22 0.10 35) 70%, oklch(0.12 0.06 30) 100%)",
         transition: "opacity 0.8s ease",
         opacity: opening ? (hidden ? 0 : 1) : 1,
       }}
