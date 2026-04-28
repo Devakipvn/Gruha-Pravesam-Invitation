@@ -204,9 +204,28 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: radial-gradient(circle, oklch(0.92 0.18 85) 0%, oklch(0.75 0.18 75 / 0) 70%);
+  background: radial-gradient(circle, oklch(0.94 0.16 85) 0%, oklch(0.78 0.18 75 / 0) 70%);
   pointer-events: none;
   animation: float-up linear infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Compositor hints for animated decorative pieces */
+.flicker, .scroll-bounce, .pulse-glow, .sway, .float-gentle, .swing, .flame-dance {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Respect reduced-motion globally — disable all decorative animation */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .ornate-border {
