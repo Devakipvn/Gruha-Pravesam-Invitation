@@ -61,7 +61,7 @@ export function MusicToggle() {
     <button
       onClick={toggle}
       aria-label={playing ? "Pause music" : "Play music"}
-      className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
       style={{
         background: "var(--gradient-gold)",
         border: "2px solid var(--ivory)",
