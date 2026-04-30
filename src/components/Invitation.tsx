@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DoorEntry } from "@/components/DoorEntry";
+
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
 import { Envelope } from "@/components/Envelope";
@@ -274,7 +274,6 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 }
 
 export function Invitation() {
-  const [opened, setOpened] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [lang, setLang] = useState<Lang>("en");
   const [envelopeOpened, setEnvelopeOpened] = useState(false);
@@ -286,16 +285,31 @@ export function Invitation() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = opened ? "auto" : "hidden";
-  }, [opened]);
+    document.body.style.overflow = envelopeOpened ? "auto" : "hidden";
+  }, [envelopeOpened]);
 
   const isFlipped = lang === "te";
 
   return (
     <div className="relative min-h-screen w-full">
-      <DoorEntry onOpen={() => setOpened(true)} />
+      {/* ENVELOPE ENTRY — full screen until opened */}
+      {!envelopeOpened && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, oklch(0.92 0.04 70) 0%, oklch(0.82 0.06 55) 50%, oklch(0.65 0.08 45) 100%)",
+          }}
+        >
+          <div className="w-full max-w-lg">
+            <Envelope onOpen={() => setEnvelopeOpened(true)}>
+              <div />
+            </Envelope>
+          </div>
+        </div>
+      )}
 
-      {opened && (
+      {envelopeOpened && (
         <>
           <Particles count={22} />
           <MusicToggle />
@@ -340,52 +354,42 @@ export function Invitation() {
             </div>
           </section>
 
-          {/* INVITATION CARD with envelope */}
+          {/* INVITATION CARD */}
           <section className="min-h-screen flex flex-col items-center justify-start sm:justify-center px-3 sm:px-4 pt-8 pb-10 sm:py-16 md:py-20 relative">
-            {!envelopeOpened ? (
-              <Reveal className="w-full max-w-3xl">
-                <Envelope onOpen={() => setEnvelopeOpened(true)}>
-                  <div />
-                </Envelope>
-              </Reveal>
-            ) : (
-              <>
-                {/* Language toggle */}
-                <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md fade-up" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-                  <button
-                    onClick={() => setLang("en")}
-                    className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
-                      lang === "en"
-                        ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
-                        : "text-[var(--maroon)] hover:bg-[var(--cream)]"
-                    }`}
-                  >
-                    English
-                  </button>
-                  <button
-                    onClick={() => setLang("te")}
-                    className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
-                      lang === "te"
-                        ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
-                        : "text-[var(--maroon)] hover:bg-[var(--cream)]"
-                    }`}
-                  >
-                    తెలుగు
-                  </button>
-                </div>
+            {/* Language toggle */}
+            <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md fade-up" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
+              <button
+                onClick={() => setLang("en")}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
+                  lang === "en"
+                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                }`}
+              >
+                English
+              </button>
+              <button
+                onClick={() => setLang("te")}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
+                  lang === "te"
+                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                }`}
+              >
+                తెలుగు
+              </button>
+            </div>
 
-                <Reveal className="w-full max-w-3xl flip-perspective">
-                  <div className={`flip-inner ${isFlipped ? "is-flipped" : ""}`}>
-                    <div className="flip-face">
-                      <CardFace c={EN} lang="en" />
-                    </div>
-                    <div className="flip-face flip-back">
-                      <CardFace c={TE} lang="te" />
-                    </div>
-                  </div>
-                </Reveal>
-              </>
-            )}
+            <Reveal className="w-full max-w-3xl flip-perspective">
+              <div className={`flip-inner ${isFlipped ? "is-flipped" : ""}`}>
+                <div className="flip-face">
+                  <CardFace c={EN} lang="en" />
+                </div>
+                <div className="flip-face flip-back">
+                  <CardFace c={TE} lang="te" />
+                </div>
+              </div>
+            </Reveal>
           </section>
 
           {/* HOMAM + COW SCENE */}
