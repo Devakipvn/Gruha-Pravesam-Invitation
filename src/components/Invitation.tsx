@@ -295,13 +295,13 @@ export function Invitation() {
       {/* ENVELOPE ENTRY — full screen until opened */}
       {!envelopeOpened && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:py-0"
           style={{
             background:
               "radial-gradient(ellipse at 50% 40%, oklch(0.92 0.04 70) 0%, oklch(0.82 0.06 55) 50%, oklch(0.65 0.08 45) 100%)",
           }}
         >
-          <div className="w-full max-w-lg">
+          <div className="w-full max-w-sm sm:max-w-md md:max-w-lg">
             <Envelope onOpen={() => setEnvelopeOpened(true)}>
               <div />
             </Envelope>
