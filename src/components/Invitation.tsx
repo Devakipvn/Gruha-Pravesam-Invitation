@@ -164,10 +164,10 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
       {/* Title */}
       <h1
-        className={`${teFont} text-2xl sm:text-4xl md:text-5xl text-[var(--maroon)] break-words`}
+        className={`${teFont} text-xl sm:text-3xl md:text-4xl text-[var(--maroon)] break-words`}
         style={
           !isTe
-            ? { fontFamily: "var(--font-display)", letterSpacing: "0.12em", fontWeight: 700 }
+            ? { fontFamily: "var(--font-display)", letterSpacing: "0.1em", fontWeight: 700 }
             : { fontWeight: 700, letterSpacing: "0.04em" }
         }
       >
