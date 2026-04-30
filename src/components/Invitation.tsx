@@ -340,42 +340,52 @@ export function Invitation() {
             </div>
           </section>
 
-          {/* INVITATION CARD with flip */}
+          {/* INVITATION CARD with envelope */}
           <section className="min-h-screen flex flex-col items-center justify-start sm:justify-center px-3 sm:px-4 pt-8 pb-10 sm:py-16 md:py-20 relative">
-            {/* Language toggle */}
-            <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md">
-              <button
-                onClick={() => setLang("en")}
-                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
-                  lang === "en"
-                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
-                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
-                }`}
-              >
-                English
-              </button>
-              <button
-                onClick={() => setLang("te")}
-                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
-                  lang === "te"
-                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
-                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
-                }`}
-              >
-                తెలుగు
-              </button>
-            </div>
+            {!envelopeOpened ? (
+              <Reveal className="w-full max-w-3xl">
+                <Envelope onOpen={() => setEnvelopeOpened(true)}>
+                  <div />
+                </Envelope>
+              </Reveal>
+            ) : (
+              <>
+                {/* Language toggle */}
+                <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md fade-up" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
+                  <button
+                    onClick={() => setLang("en")}
+                    className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
+                      lang === "en"
+                        ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                        : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                    }`}
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => setLang("te")}
+                    className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
+                      lang === "te"
+                        ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                        : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                    }`}
+                  >
+                    తెలుగు
+                  </button>
+                </div>
 
-            <Reveal className="w-full max-w-3xl flip-perspective">
-              <div className={`flip-inner ${isFlipped ? "is-flipped" : ""}`}>
-                <div className="flip-face">
-                  <CardFace c={EN} lang="en" />
-                </div>
-                <div className="flip-face flip-back">
-                  <CardFace c={TE} lang="te" />
-                </div>
-              </div>
-            </Reveal>
+                <Reveal className="w-full max-w-3xl flip-perspective">
+                  <div className={`flip-inner ${isFlipped ? "is-flipped" : ""}`}>
+                    <div className="flip-face">
+                      <CardFace c={EN} lang="en" />
+                    </div>
+                    <div className="flip-face flip-back">
+                      <CardFace c={TE} lang="te" />
+                    </div>
+                  </div>
+                </Reveal>
+              </>
+            )}
           </section>
 
           {/* HOMAM + COW SCENE */}
