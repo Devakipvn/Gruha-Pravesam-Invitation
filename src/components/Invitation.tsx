@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DoorEntry } from "@/components/DoorEntry";
+
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
 import { Envelope } from "@/components/Envelope";
@@ -274,7 +274,6 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 }
 
 export function Invitation() {
-  const [opened, setOpened] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [lang, setLang] = useState<Lang>("en");
   const [envelopeOpened, setEnvelopeOpened] = useState(false);
@@ -285,18 +284,11 @@ export function Invitation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = opened ? "auto" : "hidden";
-  }, [opened]);
-
   const isFlipped = lang === "te";
 
   return (
     <div className="relative min-h-screen w-full">
-      <DoorEntry onOpen={() => setOpened(true)} />
-
-      {opened && (
-        <>
+      <>
           <Particles count={22} />
           <MusicToggle />
 
