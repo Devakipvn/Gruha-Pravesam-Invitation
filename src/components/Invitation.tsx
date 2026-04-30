@@ -417,7 +417,6 @@ export function Invitation() {
             </p>
           </footer>
         </>
-      )}
     </div>
   );
 }
