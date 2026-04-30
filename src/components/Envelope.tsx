@@ -12,7 +12,6 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
   const handleOpen = () => {
     if (isOpen) return;
     setIsOpen(true);
-    // After flap opens and card slides up, mark fully open
     setTimeout(() => {
       setFullyOpen(true);
       onOpen();
@@ -28,33 +27,31 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
   }
 
   return (
-    <div className="w-full flex flex-col items-center">
-      {/* Envelope container */}
+    <div className="w-full flex flex-col items-center px-3 sm:px-0">
       <div
-        className="relative w-full max-w-3xl mx-auto cursor-pointer"
+        className="relative w-full max-w-md sm:max-w-lg mx-auto cursor-pointer"
         style={{ perspective: "1200px" }}
         onClick={handleOpen}
       >
-        {/* Envelope body */}
+        {/* Envelope body — responsive aspect ratio */}
         <div
-          className="relative rounded-2xl sm:rounded-3xl overflow-visible"
+          className="relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-visible"
           style={{
             background: "linear-gradient(160deg, oklch(0.88 0.06 55), oklch(0.78 0.08 50), oklch(0.70 0.09 45))",
             border: "2px solid oklch(0.65 0.12 60)",
             boxShadow: "0 20px 60px -15px oklch(0.30 0.08 40 / 0.5), inset 0 2px 4px oklch(0.95 0.05 80 / 0.5)",
-            aspectRatio: "4 / 3",
-            maxHeight: "420px",
+            aspectRatio: "5 / 4",
           }}
         >
-          {/* Inner shadow pattern to look like paper */}
+          {/* Paper lines */}
           <div
-            className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none"
+            className="absolute inset-0 rounded-xl sm:rounded-2xl md:rounded-3xl pointer-events-none"
             style={{
-              background: "repeating-linear-gradient(0deg, transparent, transparent 18px, oklch(0.72 0.06 55 / 0.15) 18px, oklch(0.72 0.06 55 / 0.15) 19px)",
+              background: "repeating-linear-gradient(0deg, transparent, transparent 18px, oklch(0.72 0.06 55 / 0.12) 18px, oklch(0.72 0.06 55 / 0.12) 19px)",
             }}
           />
 
-          {/* Diagonal fold lines */}
+          {/* Diagonal fold */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -62,26 +59,23 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             }}
           />
 
-          {/* Center seal / wax blob */}
+          {/* Center seal */}
           <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
-            <div
-              className={`flex flex-col items-center gap-2 transition-opacity duration-500 ${isOpen ? "opacity-0" : "opacity-100"}`}
-            >
-              {/* Wax seal */}
+            <div className={`flex flex-col items-center gap-1.5 sm:gap-2 transition-opacity duration-500 ${isOpen ? "opacity-0" : "opacity-100"}`}>
               <div
                 className="relative pulse-glow rounded-full flex items-center justify-center"
                 style={{
-                  width: "clamp(70px, 18vw, 100px)",
-                  height: "clamp(70px, 18vw, 100px)",
+                  width: "clamp(56px, 16vw, 90px)",
+                  height: "clamp(56px, 16vw, 90px)",
                   background: "radial-gradient(circle at 35% 35%, oklch(0.50 0.20 30), oklch(0.35 0.18 25) 60%, oklch(0.25 0.14 20))",
                   boxShadow: "0 6px 20px oklch(0.25 0.14 20 / 0.6), inset 0 2px 6px oklch(0.60 0.18 35 / 0.4)",
                   border: "2px solid oklch(0.45 0.16 28)",
                 }}
               >
-                <span className="text-2xl sm:text-3xl" style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}>🙏</span>
+                <span className="text-xl sm:text-2xl md:text-3xl" style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}>🙏</span>
               </div>
               <span
-                className="px-4 py-1.5 rounded-full font-display tracking-[0.2em] text-[10px] sm:text-xs uppercase whitespace-nowrap pointer-events-auto"
+                className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full font-display tracking-[0.15em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] md:text-xs uppercase whitespace-nowrap pointer-events-auto"
                 style={{
                   background: "linear-gradient(135deg, oklch(0.85 0.13 85), oklch(0.55 0.14 65))",
                   color: "oklch(0.20 0.06 30)",
@@ -93,7 +87,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             </div>
           </div>
 
-          {/* Top flap (triangle) — opens upward */}
+          {/* Top flap */}
           <div
             className="absolute top-0 left-0 right-0 z-20"
             style={{
@@ -105,7 +99,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             <div
               style={{
                 width: "100%",
-                aspectRatio: "2 / 1",
+                aspectRatio: "2.2 / 1",
                 clipPath: "polygon(0 0, 100% 0, 50% 100%)",
                 background: "linear-gradient(180deg, oklch(0.82 0.07 52), oklch(0.72 0.09 48))",
                 borderBottom: "2px solid oklch(0.60 0.10 55)",
@@ -114,11 +108,11 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             />
           </div>
 
-          {/* Bottom fold (decorative) */}
+          {/* Bottom fold */}
           <div
             className="absolute bottom-0 left-0 right-0 pointer-events-none"
             style={{
-              height: "40%",
+              height: "38%",
               clipPath: "polygon(0 100%, 50% 20%, 100% 100%)",
               background: "linear-gradient(0deg, oklch(0.75 0.07 50), oklch(0.80 0.06 52))",
               borderTop: "1px solid oklch(0.65 0.10 55 / 0.5)",
@@ -147,11 +141,11 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             }}
           />
 
-          {/* Card peeking out — slides up when opened */}
+          {/* Card peeking out */}
           <div
-            className="absolute left-[8%] right-[8%] bottom-[15%] z-5 rounded-xl overflow-hidden transition-all"
+            className="absolute left-[8%] right-[8%] bottom-[12%] z-5 rounded-lg sm:rounded-xl overflow-hidden"
             style={{
-              height: "55%",
+              height: "50%",
               background: "radial-gradient(ellipse at top, var(--ivory) 0%, var(--cream) 70%)",
               border: "1px solid var(--gold)",
               boxShadow: "0 -4px 20px oklch(0.55 0.14 65 / 0.2)",
@@ -160,16 +154,15 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
               opacity: isOpen ? 0 : 1,
             }}
           >
-            {/* Mini preview of invitation */}
-            <div className="h-full flex flex-col items-center justify-center p-4 text-center">
-              <p className="text-gold-gradient font-script text-xl sm:text-2xl">Gṛha Praveśa</p>
-              <p className="font-display tracking-[0.2em] text-[8px] sm:text-[10px] text-[var(--gold-deep)] mt-2 uppercase">
+            <div className="h-full flex flex-col items-center justify-center p-3 sm:p-4 text-center">
+              <p className="text-gold-gradient font-script text-lg sm:text-xl md:text-2xl font-bold italic">Gṛha Praveśa</p>
+              <p className="font-display tracking-[0.15em] sm:tracking-[0.2em] text-[7px] sm:text-[9px] md:text-[10px] text-[var(--gold-deep)] mt-1.5 sm:mt-2 uppercase">
                 House Warming Ceremony
               </p>
-              <div className="mt-3 flex items-center gap-2">
-                <span className="h-px w-8 bg-[var(--gold-deep)]/40" />
-                <span className="text-[var(--gold-deep)] text-xs">❖</span>
-                <span className="h-px w-8 bg-[var(--gold-deep)]/40" />
+              <div className="mt-2 sm:mt-3 flex items-center gap-2">
+                <span className="h-px w-6 sm:w-8 bg-[var(--gold-deep)]/40" />
+                <span className="text-[var(--gold-deep)] text-[10px] sm:text-xs">❖</span>
+                <span className="h-px w-6 sm:w-8 bg-[var(--gold-deep)]/40" />
               </div>
             </div>
           </div>
@@ -177,7 +170,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
 
         {/* Gold border accent */}
         <div
-          className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none"
+          className="absolute inset-0 rounded-xl sm:rounded-2xl md:rounded-3xl pointer-events-none"
           style={{
             border: "1px solid oklch(0.75 0.12 70 / 0.3)",
             boxShadow: "inset 0 0 30px oklch(0.85 0.10 75 / 0.1)",

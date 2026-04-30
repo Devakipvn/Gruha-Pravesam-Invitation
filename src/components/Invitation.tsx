@@ -149,12 +149,12 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
       {/* Blessing */}
       <p
-        className={`mt-4 ${teFont} text-xl sm:text-2xl md:text-3xl text-gold-gradient tracking-wide`}
+        className={`mt-3 sm:mt-4 ${teFont} text-lg sm:text-2xl md:text-3xl text-gold-gradient tracking-wide font-semibold italic`}
         style={!isTe ? { fontFamily: "var(--font-script)" } : undefined}
       >
         {c.blessing}
       </p>
-      <p className={`mt-1 ${teFont} font-body italic text-[var(--maroon)]/65 text-xs sm:text-sm md:text-base tracking-wide`}>
+      <p className={`mt-1 ${teFont} font-body italic text-[var(--maroon)]/65 text-[11px] sm:text-sm md:text-base tracking-wide`}>
         {c.blessingSub}
       </p>
 
@@ -164,10 +164,10 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
       {/* Title */}
       <h1
-        className={`${teFont} text-2xl sm:text-4xl md:text-5xl text-[var(--maroon)] break-words`}
+        className={`${teFont} text-xl sm:text-3xl md:text-4xl text-[var(--maroon)] break-words`}
         style={
           !isTe
-            ? { fontFamily: "var(--font-display)", letterSpacing: "0.12em", fontWeight: 700 }
+            ? { fontFamily: "var(--font-display)", letterSpacing: "0.1em", fontWeight: 700 }
             : { fontWeight: 700, letterSpacing: "0.04em" }
         }
       >
@@ -295,13 +295,13 @@ export function Invitation() {
       {/* ENVELOPE ENTRY — full screen until opened */}
       {!envelopeOpened && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 sm:py-0"
           style={{
             background:
               "radial-gradient(ellipse at 50% 40%, oklch(0.92 0.04 70) 0%, oklch(0.82 0.06 55) 50%, oklch(0.65 0.08 45) 100%)",
           }}
         >
-          <div className="w-full max-w-lg">
+          <div className="w-full max-w-sm sm:max-w-md md:max-w-lg">
             <Envelope onOpen={() => setEnvelopeOpened(true)}>
               <div />
             </Envelope>
@@ -324,21 +324,21 @@ export function Invitation() {
           {/* HERO welcome */}
           <section className="min-h-[88vh] sm:min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-0 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
-              <p className="font-script text-5xl sm:text-6xl md:text-8xl text-gold-gradient leading-none">
+              <p className="font-script text-4xl sm:text-5xl md:text-7xl text-gold-gradient leading-tight font-bold italic">
                 Gṛha Praveśa
               </p>
-              <p className="font-display tracking-[0.25em] sm:tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mt-3 text-[var(--gold-deep)]">
-                HOUSE WARMING CEREMONY
+              <p className="font-display tracking-[0.2em] sm:tracking-[0.35em] text-[9px] sm:text-xs md:text-sm mt-2 sm:mt-3 text-[var(--gold-deep)] uppercase">
+                House Warming Ceremony
               </p>
-              <div className="mt-6 sm:mt-8 flex items-center justify-center gap-3">
-                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
-                <span className="text-[var(--gold-deep)] text-xl">❖</span>
-                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
+              <div className="mt-5 sm:mt-7 flex items-center justify-center gap-3">
+                <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
+                <span className="text-[var(--gold-deep)] text-lg sm:text-xl">❖</span>
+                <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
               </div>
-              <p className="font-script text-4xl sm:text-5xl md:text-6xl text-gold-gradient leading-none mt-5 sm:mt-6">
+              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-tight mt-4 sm:mt-5 font-semibold italic">
                 Welcome
               </p>
-              <p className="mt-5 sm:mt-6 font-display tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
+              <p className="mt-4 sm:mt-5 font-display tracking-[0.15em] sm:tracking-[0.25em] text-[9px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
                 ✨ SCROLL TO SEE THE INVITATION ✨
               </p>
             </div>
@@ -395,7 +395,7 @@ export function Invitation() {
           {/* HOMAM + COW SCENE */}
           <section className="relative pt-24 md:pt-32 pb-16 md:pb-20 px-2 sm:px-4 overflow-hidden">
             <Reveal className="max-w-5xl mx-auto text-center mb-10 md:mb-14 pt-4">
-              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-[1.4] pb-2">
+              <p className="font-script text-2xl sm:text-3xl md:text-5xl text-gold-gradient leading-[1.4] pb-2 font-bold italic">
                 Pavitra Saṅskāra
               </p>
               <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)] mt-3">
@@ -421,7 +421,7 @@ export function Invitation() {
               <span className="text-[var(--gold-deep)]">🪔</span>
               <span className="h-px w-14 sm:w-20 bg-[var(--gold-deep)]/40" />
             </div>
-            <p className="font-script text-2xl sm:text-3xl md:text-4xl text-gold-gradient">
+            <p className="font-script text-xl sm:text-2xl md:text-3xl text-gold-gradient font-semibold italic">
               Your presence is our blessing
             </p>
             <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs mt-4 text-[var(--gold-deep)]">
