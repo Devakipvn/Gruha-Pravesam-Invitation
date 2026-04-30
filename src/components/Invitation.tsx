@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { DoorEntry } from "@/components/DoorEntry";
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
+import { Envelope } from "@/components/Envelope";
 import { Typewriter } from "@/components/Typewriter";
 
 import { MusicToggle } from "@/components/MusicToggle";
