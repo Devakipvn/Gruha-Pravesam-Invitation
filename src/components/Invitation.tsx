@@ -324,21 +324,21 @@ export function Invitation() {
           {/* HERO welcome */}
           <section className="min-h-[88vh] sm:min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-0 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
-              <p className="font-script text-5xl sm:text-6xl md:text-8xl text-gold-gradient leading-none">
+              <p className="font-script text-4xl sm:text-5xl md:text-7xl text-gold-gradient leading-tight font-bold italic">
                 Gṛha Praveśa
               </p>
-              <p className="font-display tracking-[0.25em] sm:tracking-[0.4em] text-[10px] sm:text-xs md:text-sm mt-3 text-[var(--gold-deep)]">
-                HOUSE WARMING CEREMONY
+              <p className="font-display tracking-[0.2em] sm:tracking-[0.35em] text-[9px] sm:text-xs md:text-sm mt-2 sm:mt-3 text-[var(--gold-deep)] uppercase">
+                House Warming Ceremony
               </p>
-              <div className="mt-6 sm:mt-8 flex items-center justify-center gap-3">
-                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
-                <span className="text-[var(--gold-deep)] text-xl">❖</span>
-                <span className="h-px w-12 sm:w-24 bg-[var(--gold-deep)]/50" />
+              <div className="mt-5 sm:mt-7 flex items-center justify-center gap-3">
+                <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
+                <span className="text-[var(--gold-deep)] text-lg sm:text-xl">❖</span>
+                <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
               </div>
-              <p className="font-script text-4xl sm:text-5xl md:text-6xl text-gold-gradient leading-none mt-5 sm:mt-6">
+              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-tight mt-4 sm:mt-5 font-semibold italic">
                 Welcome
               </p>
-              <p className="mt-5 sm:mt-6 font-display tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
+              <p className="mt-4 sm:mt-5 font-display tracking-[0.15em] sm:tracking-[0.25em] text-[9px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
                 ✨ SCROLL TO SEE THE INVITATION ✨
               </p>
             </div>
