@@ -149,12 +149,12 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
       {/* Blessing */}
       <p
-        className={`mt-4 ${teFont} text-xl sm:text-2xl md:text-3xl text-gold-gradient tracking-wide`}
+        className={`mt-3 sm:mt-4 ${teFont} text-lg sm:text-2xl md:text-3xl text-gold-gradient tracking-wide font-semibold italic`}
         style={!isTe ? { fontFamily: "var(--font-script)" } : undefined}
       >
         {c.blessing}
       </p>
-      <p className={`mt-1 ${teFont} font-body italic text-[var(--maroon)]/65 text-xs sm:text-sm md:text-base tracking-wide`}>
+      <p className={`mt-1 ${teFont} font-body italic text-[var(--maroon)]/65 text-[11px] sm:text-sm md:text-base tracking-wide`}>
         {c.blessingSub}
       </p>
 
