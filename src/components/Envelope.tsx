@@ -63,7 +63,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
           />
 
           {/* Center seal / wax blob */}
-          <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
             <div
               className={`flex flex-col items-center gap-2 transition-opacity duration-500 ${isOpen ? "opacity-0" : "opacity-100"}`}
             >
