@@ -395,7 +395,7 @@ export function Invitation() {
           {/* HOMAM + COW SCENE */}
           <section className="relative pt-24 md:pt-32 pb-16 md:pb-20 px-2 sm:px-4 overflow-hidden">
             <Reveal className="max-w-5xl mx-auto text-center mb-10 md:mb-14 pt-4">
-              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-[1.4] pb-2">
+              <p className="font-script text-2xl sm:text-3xl md:text-5xl text-gold-gradient leading-[1.4] pb-2 font-bold italic">
                 Pavitra Saṅskāra
               </p>
               <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)] mt-3">
@@ -421,7 +421,7 @@ export function Invitation() {
               <span className="text-[var(--gold-deep)]">🪔</span>
               <span className="h-px w-14 sm:w-20 bg-[var(--gold-deep)]/40" />
             </div>
-            <p className="font-script text-2xl sm:text-3xl md:text-4xl text-gold-gradient">
+            <p className="font-script text-xl sm:text-2xl md:text-3xl text-gold-gradient font-semibold italic">
               Your presence is our blessing
             </p>
             <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs mt-4 text-[var(--gold-deep)]">
