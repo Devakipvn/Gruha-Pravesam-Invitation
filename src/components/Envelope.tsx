@@ -72,7 +72,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
                   border: "2px solid oklch(0.45 0.16 28)",
                 }}
               >
-                <span className="text-xl sm:text-2xl md:text-3xl" style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}>🙏</span>
+                <span className="font-script text-xl sm:text-2xl md:text-3xl italic font-bold" style={{ color: "oklch(0.92 0.10 80)", filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))" }}>ॐ</span>
               </div>
               <span
                 className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full font-display tracking-[0.15em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] md:text-xs uppercase whitespace-nowrap pointer-events-auto"
