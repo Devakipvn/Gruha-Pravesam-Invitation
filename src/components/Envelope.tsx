@@ -15,7 +15,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
     setTimeout(() => {
       setFullyOpen(true);
       onOpen();
-    }, 1800);
+    }, 2000);
   };
 
   if (fullyOpen) {
