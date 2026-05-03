@@ -44,7 +44,7 @@ const EN: CardContent = {
   invite:
     "With hearts full of gratitude and joy, we humbly invite you and your family to grace our new home with your divine presence and warm blessings on this auspicious occasion.",
   dateLabel: "DATE",
-  dateValue: "Saturday, 3rd May",
+  dateValue: "Saturday, 9th May",
   dateSub: "Early Morning",
   timeLabel: "TIME",
   timeValue: "4:30 AM",
@@ -61,7 +61,7 @@ const EN: CardContent = {
   ],
   regards: "WITH WARM REGARDS",
   family: "The Nadiminti Family",
-  hosts: "Venkata Ramana & Satyavathi",
+  hosts: "Venkata Ramana & Satyavathi\nwith sons Sandeep Kumar, Avinash Naidu & Sarath Kumar",
   flipLabel: "తెలుగు",
 };
 
@@ -73,7 +73,7 @@ const TE: CardContent = {
   invite:
     "ఎంతో ఆనందంతో మరియు భక్తి పూర్వకంగా, మా క్రొత్త ఇంటి గృహప్రవేశ శుభ సందర్భమున మీరు మీ కుటుంబ సమేతంగా విచ్చేసి మమ్మల్ని ఆశీర్వదించవలసిందిగా హృదయపూర్వకంగా ఆహ్వానిస్తున్నాము.",
   dateLabel: "తేదీ",
-  dateValue: "శనివారం, మే 3",
+  dateValue: "శనివారం, మే 9",
   dateSub: "తెల్లవారుజామున",
   timeLabel: "సమయం",
   timeValue: "4:30 ఉదయం",
@@ -90,7 +90,7 @@ const TE: CardContent = {
   ],
   regards: "ప్రేమపూర్వక నమస్కారములతో",
   family: "నాదిమింటి కుటుంబం",
-  hosts: "వెంకట రమణ & సత్యవతి",
+  hosts: "వెంకట రమణ & సత్యవతి\nకుమారులు సందీప్ కుమార్, అవినాష్ నాయుడు & శరత్ కుమార్",
   flipLabel: "English",
 };
 
@@ -255,7 +255,7 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         >
           {c.family}
         </p>
-        <p className={`${teFont} font-body italic text-sm md:text-base text-[var(--maroon)]/70 mt-3`}>
+        <p className={`${teFont} font-body italic text-sm md:text-base text-[var(--maroon)]/70 mt-3 whitespace-pre-line`}>
           {c.hosts}
         </p>
       </div>
@@ -400,6 +400,50 @@ export function Invitation() {
               <p className="font-body italic text-base sm:text-lg md:text-xl text-[var(--maroon)] leading-relaxed">
                 "May this home be blessed with peace, prosperity, and the laughter of loved ones."
               </p>
+            </Reveal>
+          </section>
+
+          {/* MAP / LOCATION */}
+          <section className="relative py-16 md:py-20 px-4">
+            <Reveal className="max-w-5xl mx-auto text-center mb-8 md:mb-10">
+              <p className="font-script text-2xl sm:text-3xl md:text-5xl text-gold-gradient leading-[1.4] pb-2 font-bold italic">
+                Find Us Here
+              </p>
+              <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)] mt-2">
+                LOCATION ON MAP
+              </p>
+              <p className="font-body text-sm sm:text-base text-[var(--maroon)]/80 mt-4 max-w-xl mx-auto">
+                Sri Lakshmi Srinivasa Towers, Sunkara Vaari Thota, Venkatapuram,
+                Venna Valli Vaari Peta, Choudimella, Eluru – 534001, Andhra Pradesh
+              </p>
+            </Reveal>
+
+            <Reveal delay={150} className="max-w-4xl mx-auto">
+              <div
+                className="rounded-2xl overflow-hidden"
+                style={{ border: "1px solid var(--gold)", boxShadow: "var(--shadow-card)" }}
+              >
+                <iframe
+                  title="Venue location on Google Maps"
+                  src="https://www.google.com/maps?q=Sri+Lakshmi+Srinivasa+Towers,+Choudimella,+Eluru,+Andhra+Pradesh+534001&output=embed"
+                  width="100%"
+                  height="380"
+                  style={{ border: 0, display: "block" }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <div className="text-center mt-5">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Sri+Lakshmi+Srinivasa+Towers,+Choudimella,+Eluru,+Andhra+Pradesh+534001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-2.5 rounded-full font-display tracking-widest text-xs sm:text-sm bg-[var(--gold-deep)] text-[var(--ivory)] shadow hover:opacity-90 transition"
+                >
+                  GET DIRECTIONS →
+                </a>
+              </div>
             </Reveal>
           </section>
 
