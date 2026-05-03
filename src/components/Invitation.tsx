@@ -255,7 +255,7 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         >
           {c.family}
         </p>
-        <p className={`${teFont} font-body italic text-sm md:text-base text-[var(--maroon)]/70 mt-3`}>
+        <p className={`${teFont} font-body italic text-sm md:text-base text-[var(--maroon)]/70 mt-3 whitespace-pre-line`}>
           {c.hosts}
         </p>
       </div>
