@@ -92,8 +92,10 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             className="absolute top-0 left-0 right-0 z-20"
             style={{
               transformOrigin: "top center",
-              transition: "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1)",
               transform: isOpen ? "rotateX(180deg)" : "rotateX(0deg)",
+              willChange: "transform",
+              backfaceVisibility: "hidden",
             }}
           >
             <div
