@@ -59,6 +59,20 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             }}
           />
 
+          {/* Paper shimmer sweep */}
+          <div
+            className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl"
+            style={{ mixBlendMode: "overlay" }}
+          >
+            <div
+              className="absolute inset-y-0 -left-1/2 w-1/2 paper-shimmer"
+              style={{
+                background:
+                  "linear-gradient(105deg, transparent 0%, oklch(1 0 0 / 0.45) 50%, transparent 100%)",
+              }}
+            />
+          </div>
+
           {/* Center seal */}
           <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
             <div className={`flex flex-col items-center gap-1.5 sm:gap-2 transition-opacity duration-500 ${isOpen ? "opacity-0" : "opacity-100"}`}>
