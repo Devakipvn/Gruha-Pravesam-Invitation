@@ -129,16 +129,6 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         </span>
       ))}
 
-      {/* Pasupu kumkuma at top, fully inside card */}
-      <div className="mb-4 flex justify-center">
-        <img
-          src={pasupu}
-          alt="Pasupu Kumkuma — turmeric and vermilion blessing"
-          className="w-28 sm:w-32 md:w-36 h-auto object-contain"
-          style={{ filter: "drop-shadow(0 8px 18px rgba(0,0,0,0.18))" }}
-        />
-      </div>
-
       {/* Ganesha */}
       <img
         src={ganesha}
