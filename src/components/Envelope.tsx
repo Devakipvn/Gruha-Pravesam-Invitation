@@ -15,7 +15,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
     setTimeout(() => {
       setFullyOpen(true);
       onOpen();
-    }, 1800);
+    }, 2000);
   };
 
   if (fullyOpen) {
@@ -59,6 +59,20 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             }}
           />
 
+          {/* Paper shimmer sweep */}
+          <div
+            className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl"
+            style={{ mixBlendMode: "overlay" }}
+          >
+            <div
+              className="absolute inset-y-0 -left-1/2 w-1/2 paper-shimmer"
+              style={{
+                background:
+                  "linear-gradient(105deg, transparent 0%, oklch(1 0 0 / 0.45) 50%, transparent 100%)",
+              }}
+            />
+          </div>
+
           {/* Center seal */}
           <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
             <div className={`flex flex-col items-center gap-1.5 sm:gap-2 transition-opacity duration-500 ${isOpen ? "opacity-0" : "opacity-100"}`}>
@@ -72,7 +86,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
                   border: "2px solid oklch(0.45 0.16 28)",
                 }}
               >
-                <span className="text-xl sm:text-2xl md:text-3xl" style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}>🙏</span>
+                <span className="font-script text-xl sm:text-2xl md:text-3xl italic font-bold" style={{ color: "oklch(0.92 0.10 80)", filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.4))" }}>ॐ</span>
               </div>
               <span
                 className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full font-display tracking-[0.15em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] md:text-xs uppercase whitespace-nowrap pointer-events-auto"
@@ -92,8 +106,10 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             className="absolute top-0 left-0 right-0 z-20"
             style={{
               transformOrigin: "top center",
-              transition: "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+              transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1)",
               transform: isOpen ? "rotateX(180deg)" : "rotateX(0deg)",
+              willChange: "transform",
+              backfaceVisibility: "hidden",
             }}
           >
             <div
