@@ -142,6 +142,13 @@
 .sway { animation: sway 4s ease-in-out infinite; transform-origin: top center; }
 .fade-up { animation: fade-up 0.9s ease-out forwards; }
 
+@keyframes paper-shimmer {
+  0% { transform: translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateX(400%); opacity: 0; }
+}
+.paper-shimmer { animation: paper-shimmer 3.2s ease-in-out infinite; will-change: transform, opacity; }
+
 @keyframes float-gentle {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
