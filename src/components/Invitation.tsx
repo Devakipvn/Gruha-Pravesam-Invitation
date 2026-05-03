@@ -44,7 +44,7 @@ const EN: CardContent = {
   invite:
     "With hearts full of gratitude and joy, we humbly invite you and your family to grace our new home with your divine presence and warm blessings on this auspicious occasion.",
   dateLabel: "DATE",
-  dateValue: "Saturday, 3rd May",
+  dateValue: "Saturday, 9th May",
   dateSub: "Early Morning",
   timeLabel: "TIME",
   timeValue: "4:30 AM",
@@ -61,7 +61,7 @@ const EN: CardContent = {
   ],
   regards: "WITH WARM REGARDS",
   family: "The Nadiminti Family",
-  hosts: "Venkata Ramana & Satyavathi",
+  hosts: "Venkata Ramana & Satyavathi\nwith sons Sandeep Kumar, Avinash Naidu & Sarath Kumar",
   flipLabel: "తెలుగు",
 };
 
@@ -73,7 +73,7 @@ const TE: CardContent = {
   invite:
     "ఎంతో ఆనందంతో మరియు భక్తి పూర్వకంగా, మా క్రొత్త ఇంటి గృహప్రవేశ శుభ సందర్భమున మీరు మీ కుటుంబ సమేతంగా విచ్చేసి మమ్మల్ని ఆశీర్వదించవలసిందిగా హృదయపూర్వకంగా ఆహ్వానిస్తున్నాము.",
   dateLabel: "తేదీ",
-  dateValue: "శనివారం, మే 3",
+  dateValue: "శనివారం, మే 9",
   dateSub: "తెల్లవారుజామున",
   timeLabel: "సమయం",
   timeValue: "4:30 ఉదయం",
@@ -90,7 +90,7 @@ const TE: CardContent = {
   ],
   regards: "ప్రేమపూర్వక నమస్కారములతో",
   family: "నాదిమింటి కుటుంబం",
-  hosts: "వెంకట రమణ & సత్యవతి",
+  hosts: "వెంకట రమణ & సత్యవతి\nకుమారులు సందీప్ కుమార్, అవినాష్ నాయుడు & శరత్ కుమార్",
   flipLabel: "English",
 };
 
