@@ -322,7 +322,7 @@ export function Invitation() {
           </div>
 
           {/* HERO welcome */}
-          <section className="min-h-[88vh] sm:min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-0 text-center relative">
+          <section className="min-h-[70vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 pt-6 pb-8 sm:pt-10 sm:pb-12 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
               <p className="font-script text-4xl sm:text-5xl md:text-7xl text-gold-gradient leading-tight font-bold italic">
                 Gṛha Praveśa
@@ -330,25 +330,24 @@ export function Invitation() {
               <p className="font-display tracking-[0.2em] sm:tracking-[0.35em] text-[9px] sm:text-xs md:text-sm mt-2 sm:mt-3 text-[var(--gold-deep)] uppercase">
                 House Warming Ceremony
               </p>
-              <div className="mt-5 sm:mt-7 flex items-center justify-center gap-3">
+              <div className="mt-3 sm:mt-4 flex items-center justify-center gap-3">
                 <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
                 <span className="text-[var(--gold-deep)] text-lg sm:text-xl">❖</span>
                 <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
               </div>
-              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-tight mt-4 sm:mt-5 font-semibold italic">
+              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-tight mt-3 sm:mt-4 font-semibold italic">
                 Welcome
               </p>
-              <p className="mt-4 sm:mt-5 font-display tracking-[0.15em] sm:tracking-[0.25em] text-[9px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
+              <p className="mt-3 sm:mt-4 font-display tracking-[0.15em] sm:tracking-[0.25em] text-[9px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
                 ✨ SCROLL TO SEE THE INVITATION ✨
               </p>
             </div>
             <div
-              className="absolute bottom-6 sm:bottom-12 flex flex-col items-center gap-2 scroll-bounce"
+              className="absolute bottom-4 sm:bottom-8 flex flex-col items-center gap-1.5 scroll-bounce"
               style={{ color: "var(--gold-deep)" }}
             >
-              <span className="text-2xl">📜</span>
-              <span className="text-xs tracking-widest font-display">SCROLL</span>
-              <svg width="20" height="30" viewBox="0 0 20 30" fill="none">
+              <span className="text-[10px] sm:text-xs tracking-widest font-display">SCROLL</span>
+              <svg width="18" height="26" viewBox="0 0 20 30" fill="none">
                 <path d="M10 3 L10 25 M3 18 L10 25 L17 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
