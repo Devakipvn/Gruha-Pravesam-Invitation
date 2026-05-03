@@ -403,6 +403,50 @@ export function Invitation() {
             </Reveal>
           </section>
 
+          {/* MAP / LOCATION */}
+          <section className="relative py-16 md:py-20 px-4">
+            <Reveal className="max-w-5xl mx-auto text-center mb-8 md:mb-10">
+              <p className="font-script text-2xl sm:text-3xl md:text-5xl text-gold-gradient leading-[1.4] pb-2 font-bold italic">
+                Find Us Here
+              </p>
+              <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)] mt-2">
+                LOCATION ON MAP
+              </p>
+              <p className="font-body text-sm sm:text-base text-[var(--maroon)]/80 mt-4 max-w-xl mx-auto">
+                Sri Lakshmi Srinivasa Towers, Sunkara Vaari Thota, Venkatapuram,
+                Venna Valli Vaari Peta, Choudimella, Eluru – 534001, Andhra Pradesh
+              </p>
+            </Reveal>
+
+            <Reveal delay={150} className="max-w-4xl mx-auto">
+              <div
+                className="rounded-2xl overflow-hidden"
+                style={{ border: "1px solid var(--gold)", boxShadow: "var(--shadow-card)" }}
+              >
+                <iframe
+                  title="Venue location on Google Maps"
+                  src="https://www.google.com/maps?q=Sri+Lakshmi+Srinivasa+Towers,+Choudimella,+Eluru,+Andhra+Pradesh+534001&output=embed"
+                  width="100%"
+                  height="380"
+                  style={{ border: 0, display: "block" }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <div className="text-center mt-5">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Sri+Lakshmi+Srinivasa+Towers,+Choudimella,+Eluru,+Andhra+Pradesh+534001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-2.5 rounded-full font-display tracking-widest text-xs sm:text-sm bg-[var(--gold-deep)] text-[var(--ivory)] shadow hover:opacity-90 transition"
+                >
+                  GET DIRECTIONS →
+                </a>
+              </div>
+            </Reveal>
+          </section>
+
           {/* Footer */}
           <footer className="py-12 md:py-16 px-4 text-center relative">
             <div className="flex items-center justify-center gap-3 mb-6">
