@@ -322,23 +322,23 @@ export function Invitation() {
           </div>
 
           {/* HERO welcome */}
-          <section className="min-h-[70vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 pt-6 pb-8 sm:pt-10 sm:pb-12 text-center relative">
+          <section className="min-h-[65vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-3 sm:px-6 pt-4 pb-6 sm:pt-10 sm:pb-12 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
-              <p className="font-script text-4xl sm:text-5xl md:text-7xl text-gold-gradient leading-tight font-bold italic">
+              <p className="font-script text-[2.25rem] leading-[1.05] sm:text-5xl md:text-7xl text-gold-gradient font-bold italic">
                 Gṛha Praveśa
               </p>
-              <p className="font-display tracking-[0.2em] sm:tracking-[0.35em] text-[9px] sm:text-xs md:text-sm mt-2 sm:mt-3 text-[var(--gold-deep)] uppercase">
+              <p className="font-display tracking-[0.18em] sm:tracking-[0.35em] text-[8.5px] sm:text-xs md:text-sm mt-1.5 sm:mt-3 text-[var(--gold-deep)] uppercase">
                 House Warming Ceremony
               </p>
-              <div className="mt-3 sm:mt-4 flex items-center justify-center gap-3">
-                <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
-                <span className="text-[var(--gold-deep)] text-lg sm:text-xl">❖</span>
-                <span className="h-px w-10 sm:w-20 bg-[var(--gold-deep)]/50" />
+              <div className="mt-2 sm:mt-4 flex items-center justify-center gap-2 sm:gap-3">
+                <span className="h-px w-8 sm:w-20 bg-[var(--gold-deep)]/50" />
+                <span className="text-[var(--gold-deep)] text-base sm:text-xl">❖</span>
+                <span className="h-px w-8 sm:w-20 bg-[var(--gold-deep)]/50" />
               </div>
-              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-gradient leading-tight mt-3 sm:mt-4 font-semibold italic">
+              <p className="font-script text-[1.75rem] leading-[1.05] sm:text-4xl md:text-5xl text-gold-gradient mt-2 sm:mt-4 font-semibold italic">
                 Welcome
               </p>
-              <p className="mt-3 sm:mt-4 font-display tracking-[0.15em] sm:tracking-[0.25em] text-[9px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
+              <p className="mt-2 sm:mt-4 font-display tracking-[0.14em] sm:tracking-[0.25em] text-[8.5px] sm:text-xs md:text-sm text-[var(--gold-deep)]">
                 ✨ SCROLL TO SEE THE INVITATION ✨
               </p>
             </div>
