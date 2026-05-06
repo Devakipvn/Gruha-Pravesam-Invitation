@@ -34,6 +34,8 @@ interface CardContent {
   family: string;
   hosts: string;
   flipLabel: string;
+  panchangHeading: string;
+  panchang: { label: string; value: string }[];
 }
 
 const EN: CardContent = {
@@ -44,11 +46,11 @@ const EN: CardContent = {
   invite:
     "With hearts full of gratitude and joy, we humbly invite you and your family to grace our new home with your divine presence and warm blessings on this auspicious occasion.",
   dateLabel: "DATE",
-  dateValue: "Saturday, 9th May",
-  dateSub: "Early Morning",
-  timeLabel: "TIME",
-  timeValue: "4:30 AM",
-  timeSub: "Brahma Muhūrta",
+  dateValue: "Friday, 9th May 2026",
+  dateSub: "Bahula Saptami",
+  timeLabel: "MUHURTHAM",
+  timeValue: "9:40 AM",
+  timeSub: "Auspicious Time",
   venueLabel: "VENUE",
   venueValue: "Sri Lakshmi Srinivasa Towers",
   venueSub: "Eluru, Andhra Pradesh",
@@ -63,6 +65,15 @@ const EN: CardContent = {
   family: "The Nadiminti Family",
   hosts: "Venkata Ramana & Satyavathi\nwith sons Sandeep Kumar, Avinash Naidu & Sarath Kumar",
   flipLabel: "తెలుగు",
+  panchangHeading: "✦ PANCHANGAM ✦",
+  panchang: [
+    { label: "Year", value: "Sri Vishvavasu Nama Samvatsaram" },
+    { label: "Month", value: "Vaishakha Masam" },
+    { label: "Tithi", value: "Bahula Saptami" },
+    { label: "Date", value: "09-05-2026" },
+    { label: "Day", value: "Friday" },
+    { label: "Muhurtham", value: "Morning 9:40 AM" },
+  ],
 };
 
 const TE: CardContent = {
@@ -73,11 +84,11 @@ const TE: CardContent = {
   invite:
     "ఎంతో ఆనందంతో మరియు భక్తి పూర్వకంగా, మా క్రొత్త ఇంటి గృహప్రవేశ శుభ సందర్భమున మీరు మీ కుటుంబ సమేతంగా విచ్చేసి మమ్మల్ని ఆశీర్వదించవలసిందిగా హృదయపూర్వకంగా ఆహ్వానిస్తున్నాము.",
   dateLabel: "తేదీ",
-  dateValue: "శనివారం, మే 9",
-  dateSub: "తెల్లవారుజామున",
-  timeLabel: "సమయం",
-  timeValue: "4:30 ఉదయం",
-  timeSub: "బ్రహ్మ ముహూర్తం",
+  dateValue: "శుక్రవారం, మే 9, 2026",
+  dateSub: "బహుళ సప్తమి",
+  timeLabel: "ముహూర్తం",
+  timeValue: "ఉదయం 9:40",
+  timeSub: "శుభ ముహూర్తం",
   venueLabel: "వేదిక",
   venueValue: "శ్రీ లక్ష్మీ శ్రీనివాస టవర్స్",
   venueSub: "ఏలూరు, ఆంధ్రప్రదేశ్",
@@ -92,6 +103,15 @@ const TE: CardContent = {
   family: "నాదిమింటి కుటుంబం",
   hosts: "వెంకట రమణ & సత్యవతి\nకుమారులు సందీప్ కుమార్, అవినాష్ నాయుడు & శరత్ కుమార్",
   flipLabel: "English",
+  panchangHeading: "✦ పంచాంగం ✦",
+  panchang: [
+    { label: "సంవత్సరం", value: "శ్రీ విశ్వావసు నామ సంవత్సరం" },
+    { label: "మాసం", value: "వైశాఖ మాసం" },
+    { label: "తిథి", value: "బహుళ సప్తమి" },
+    { label: "తేదీ", value: "09-05-2026" },
+    { label: "వారము", value: "శుక్రవారం" },
+    { label: "శుభ ముహూర్తం", value: "ఉదయం 9 గంటల 40 నిమిషాలకు" },
+  ],
 };
 
 function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
@@ -236,6 +256,37 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
             </span>
           ))}
         </p>
+      </div>
+
+      {/* Panchangam */}
+      <div className="mt-10 md:mt-12 max-w-2xl mx-auto">
+        <p
+          className="font-body text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] text-[var(--gold-deep)] mb-5 uppercase"
+          style={{ fontWeight: 600 }}
+        >
+          {c.panchangHeading}
+        </p>
+        <div
+          className="rounded-2xl p-5 sm:p-6 text-left"
+          style={{
+            background: "linear-gradient(160deg, var(--ivory), oklch(0.96 0.03 80))",
+            border: "1px solid var(--gold)",
+            boxShadow: "0 8px 20px -12px oklch(0.55 0.14 65 / 0.3)",
+          }}
+        >
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+            {c.panchang.map((p, i) => (
+              <div key={i} className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-3 border-b border-[var(--gold)]/20 pb-2 last:border-0">
+                <dt className={`${teFont} font-body text-[11px] sm:text-xs uppercase tracking-[0.18em] text-[var(--gold-deep)]`} style={{ fontWeight: 600 }}>
+                  {p.label}
+                </dt>
+                <dd className={`${teFont} text-sm sm:text-base text-[var(--maroon)] sm:text-right`} style={!isTe ? { fontFamily: "var(--font-body)", fontWeight: 500 } : { fontWeight: 500 }}>
+                  {p.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
 
       <div className="my-10 md:my-12 gold-divider">
