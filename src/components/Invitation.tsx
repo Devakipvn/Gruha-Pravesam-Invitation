@@ -258,6 +258,37 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         </p>
       </div>
 
+      {/* Panchangam */}
+      <div className="mt-10 md:mt-12 max-w-2xl mx-auto">
+        <p
+          className="font-body text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] text-[var(--gold-deep)] mb-5 uppercase"
+          style={{ fontWeight: 600 }}
+        >
+          {c.panchangHeading}
+        </p>
+        <div
+          className="rounded-2xl p-5 sm:p-6 text-left"
+          style={{
+            background: "linear-gradient(160deg, var(--ivory), oklch(0.96 0.03 80))",
+            border: "1px solid var(--gold)",
+            boxShadow: "0 8px 20px -12px oklch(0.55 0.14 65 / 0.3)",
+          }}
+        >
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+            {c.panchang.map((p, i) => (
+              <div key={i} className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-3 border-b border-[var(--gold)]/20 pb-2 last:border-0">
+                <dt className={`${teFont} font-body text-[11px] sm:text-xs uppercase tracking-[0.18em] text-[var(--gold-deep)]`} style={{ fontWeight: 600 }}>
+                  {p.label}
+                </dt>
+                <dd className={`${teFont} text-sm sm:text-base text-[var(--maroon)] sm:text-right`} style={!isTe ? { fontFamily: "var(--font-body)", fontWeight: 500 } : { fontWeight: 500 }}>
+                  {p.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
       <div className="my-10 md:my-12 gold-divider">
         <span className="text-[var(--gold-deep)] text-base">✦</span>
       </div>
