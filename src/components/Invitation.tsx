@@ -84,11 +84,11 @@ const TE: CardContent = {
   invite:
     "ఎంతో ఆనందంతో మరియు భక్తి పూర్వకంగా, మా క్రొత్త ఇంటి గృహప్రవేశ శుభ సందర్భమున మీరు మీ కుటుంబ సమేతంగా విచ్చేసి మమ్మల్ని ఆశీర్వదించవలసిందిగా హృదయపూర్వకంగా ఆహ్వానిస్తున్నాము.",
   dateLabel: "తేదీ",
-  dateValue: "శనివారం, మే 9",
-  dateSub: "తెల్లవారుజామున",
-  timeLabel: "సమయం",
-  timeValue: "4:30 ఉదయం",
-  timeSub: "బ్రహ్మ ముహూర్తం",
+  dateValue: "శుక్రవారం, మే 9, 2026",
+  dateSub: "బహుళ సప్తమి",
+  timeLabel: "ముహూర్తం",
+  timeValue: "ఉదయం 9:40",
+  timeSub: "శుభ ముహూర్తం",
   venueLabel: "వేదిక",
   venueValue: "శ్రీ లక్ష్మీ శ్రీనివాస టవర్స్",
   venueSub: "ఏలూరు, ఆంధ్రప్రదేశ్",
@@ -103,6 +103,15 @@ const TE: CardContent = {
   family: "నాదిమింటి కుటుంబం",
   hosts: "వెంకట రమణ & సత్యవతి\nకుమారులు సందీప్ కుమార్, అవినాష్ నాయుడు & శరత్ కుమార్",
   flipLabel: "English",
+  panchangHeading: "✦ పంచాంగం ✦",
+  panchang: [
+    { label: "సంవత్సరం", value: "శ్రీ విశ్వావసు నామ సంవత్సరం" },
+    { label: "మాసం", value: "వైశాఖ మాసం" },
+    { label: "తిథి", value: "బహుళ సప్తమి" },
+    { label: "తేదీ", value: "09-05-2026" },
+    { label: "వారము", value: "శుక్రవారం" },
+    { label: "శుభ ముహూర్తం", value: "ఉదయం 9 గంటల 40 నిమిషాలకు" },
+  ],
 };
 
 function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
