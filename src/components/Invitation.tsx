@@ -425,7 +425,7 @@ export function Invitation() {
               >
                 <iframe
                   title="Venue location on Google Maps"
-                  src="https://www.google.com/maps?q=Sri+Lakshmi+Srinivasa+Towers,+Choudimella,+Eluru,+Andhra+Pradesh+534001&output=embed"
+                  src="https://maps.google.com/maps?q=16.7107,81.0952&z=17&output=embed"
                   width="100%"
                   height="380"
                   style={{ border: 0, display: "block" }}
@@ -436,7 +436,7 @@ export function Invitation() {
               </div>
               <div className="text-center mt-5">
                 <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Sri+Lakshmi+Srinivasa+Towers,+Choudimella,+Eluru,+Andhra+Pradesh+534001"
+                  href="https://maps.app.goo.gl/RWrGVbsSt72BYpAGA?g_st=ic"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-6 py-2.5 rounded-full font-display tracking-widest text-xs sm:text-sm bg-[var(--gold-deep)] text-[var(--ivory)] shadow hover:opacity-90 transition"
