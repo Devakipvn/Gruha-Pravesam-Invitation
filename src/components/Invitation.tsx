@@ -54,9 +54,9 @@ const EN: CardContent = {
   venueSub: "Eluru, Andhra Pradesh",
   addressHeading: "✦ ADDRESS ✦",
   addressLines: [
+    "Flat No. 202,",
     "Sri Lakshmi Srinivasa Towers,",
-    "Sunkara Vaari Thota, Venkatapuram,",
-    "Venna Valli Vaari Peta, Choudimella,",
+    "Chataparru Road, Sunkara Vari Thota,",
     "Eluru – 534001, Andhra Pradesh",
   ],
   regards: "WITH WARM REGARDS",
