@@ -498,7 +498,7 @@ export function Invitation() {
                   )}
                   <iframe
                     title="Venue location on Google Maps"
-                    src="https://maps.google.com/maps?q=16.7107,81.0952&z=17&output=embed"
+                    src="https://maps.google.com/maps?q=16.701145,81.118434&z=18&output=embed"
                     className="absolute inset-0 w-full h-full"
                     style={{ border: 0, display: "block" }}
                     loading="lazy"
@@ -510,12 +510,26 @@ export function Invitation() {
               </div>
               <div className="text-center mt-5">
                 <a
-                  href="https://maps.app.goo.gl/RWrGVbsSt72BYpAGA?g_st=ic"
+                  href="https://www.google.com/maps/dir/?api=1&destination=16.701145,81.118434"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-5 sm:px-6 py-2.5 rounded-full font-display tracking-widest text-xs sm:text-sm bg-[var(--gold-deep)] text-[var(--ivory)] shadow hover:opacity-90 transition"
+                  onClick={() => {
+                    setDirectionsLoading(true);
+                    setTimeout(() => setDirectionsLoading(false), 2500);
+                  }}
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full font-display tracking-widest text-xs sm:text-sm bg-[var(--gold-deep)] text-[var(--ivory)] shadow hover:opacity-90 transition disabled:opacity-70"
                 >
-                  GET DIRECTIONS →
+                  {directionsLoading ? (
+                    <>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="animate-spin">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2.5" opacity="0.3" />
+                        <path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      </svg>
+                      OPENING MAPS…
+                    </>
+                  ) : (
+                    <>GET DIRECTIONS →</>
+                  )}
                 </a>
               </div>
             </Reveal>
@@ -531,9 +545,12 @@ export function Invitation() {
             <p className="font-script text-xl sm:text-2xl md:text-3xl text-gold-gradient font-semibold italic">
               Your presence is our blessing
             </p>
-            <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs mt-4 text-[var(--gold-deep)]">
-              RSVP · +91 98765 43210
-            </p>
+            <a
+              href="tel:+919177064394"
+              className="inline-block font-display tracking-[0.3em] text-[10px] sm:text-xs mt-4 text-[var(--gold-deep)] hover:opacity-80 transition"
+            >
+              RSVP · +91 91770 64394
+            </a>
           </footer>
         </>
       )}
