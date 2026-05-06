@@ -34,6 +34,8 @@ interface CardContent {
   family: string;
   hosts: string;
   flipLabel: string;
+  panchangHeading: string;
+  panchang: { label: string; value: string }[];
 }
 
 const EN: CardContent = {
