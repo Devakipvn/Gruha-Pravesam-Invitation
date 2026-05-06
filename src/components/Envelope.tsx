@@ -171,7 +171,7 @@ export function Envelope({ children, onOpen }: EnvelopeProps) {
             }}
           >
             <div className="h-full flex flex-col items-center justify-center p-3 sm:p-4 text-center">
-              <p className="text-gold-gradient font-script text-lg sm:text-xl md:text-2xl font-bold italic">Gṛha Praveśa</p>
+              <p className="text-gold-gradient font-script text-lg sm:text-xl md:text-2xl font-bold italic">Gṛuha Praveśa</p>
               <p className="font-display tracking-[0.15em] sm:tracking-[0.2em] text-[7px] sm:text-[9px] md:text-[10px] text-[var(--gold-deep)] mt-1.5 sm:mt-2 uppercase">
                 House Warming Ceremony
               </p>

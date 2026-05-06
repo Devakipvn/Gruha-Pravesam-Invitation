@@ -9,7 +9,7 @@ import { MusicToggle } from "@/components/MusicToggle";
 import { HomamScene } from "@/components/HomamScene";
 import ganesha from "@/assets/ganesha.png";
 import rangoli from "@/assets/rangoli.png";
-import pasupu from "@/assets/pasupu-kumkuma.png";
+
 
 type Lang = "en" | "te";
 
@@ -41,7 +41,7 @@ interface CardContent {
 const EN: CardContent = {
   blessing: "|| Shrī Gaṇeśāya Namaḥ ||",
   blessingSub: "With the blessings of Lord Ganesha",
-  title: "GṚHA PRAVEŚA",
+  title: "GRUHA PRAVESAM",
   subtitle: "A Sacred House Warming Ceremony",
   invite:
     "With hearts full of gratitude and joy, we humbly invite you and your family to grace our new home with your divine presence and warm blessings on this auspicious occasion.",
@@ -174,12 +174,8 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
 
       {/* Title */}
       <h1
-        className={`${teFont} text-xl sm:text-3xl md:text-4xl text-[var(--maroon)] break-words`}
-        style={
-          !isTe
-            ? { fontFamily: "var(--font-display)", letterSpacing: "0.1em", fontWeight: 700 }
-            : { fontWeight: 700, letterSpacing: "0.04em" }
-        }
+        className={`${teFont} text-xl sm:text-3xl md:text-4xl text-[var(--maroon)] break-words leading-tight`}
+        style={!isTe ? { fontFamily: "var(--font-display)", letterSpacing: "0.1em", fontWeight: 700 } : { fontFamily: "var(--font-telugu)", fontWeight: 700, letterSpacing: "0.04em" }}
       >
         {c.title}
       </h1>
@@ -301,8 +297,8 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
           {c.regards}
         </p>
         <p
-          className={`${teFont} text-3xl sm:text-4xl md:text-5xl text-gold-gradient mt-4`}
-          style={!isTe ? { fontFamily: "var(--font-script)" } : { fontWeight: 700 }}
+          className={`${teFont} text-3xl sm:text-4xl md:text-5xl text-gold-gradient mt-4 leading-tight overflow-visible`}
+          style={!isTe ? { fontFamily: "var(--font-script)" } : { fontFamily: "var(--font-telugu)", fontWeight: 700 }}
         >
           {c.family}
         </p>
@@ -310,7 +306,7 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
           {c.hosts}
         </p>
       </div>
-    </article>
+    </article >
   );
 }
 
@@ -368,7 +364,7 @@ export function Invitation() {
           <section className="min-h-[65vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-3 sm:px-6 pt-4 pb-6 sm:pt-10 sm:pb-12 text-center relative">
             <div className="fade-up" style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}>
               <p className="font-script text-[2.25rem] leading-[1.05] sm:text-5xl md:text-7xl text-gold-gradient font-bold italic">
-                Gṛha Praveśa
+                Gṛuha Praveśa
               </p>
               <p className="font-display tracking-[0.18em] sm:tracking-[0.35em] text-[8.5px] sm:text-xs md:text-sm mt-1.5 sm:mt-3 text-[var(--gold-deep)] uppercase">
                 House Warming Ceremony
@@ -391,7 +387,7 @@ export function Invitation() {
             >
               <span className="text-[10px] sm:text-xs tracking-widest font-display">SCROLL</span>
               <svg width="18" height="26" viewBox="0 0 20 30" fill="none">
-                <path d="M10 3 L10 25 M3 18 L10 25 L17 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10 3 L10 25 M3 18 L10 25 L17 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
           </section>
@@ -402,21 +398,19 @@ export function Invitation() {
             <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md fade-up" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
               <button
                 onClick={() => setLang("en")}
-                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
-                  lang === "en"
-                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
-                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
-                }`}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${lang === "en"
+                  ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                  : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                  }`}
               >
                 English
               </button>
               <button
                 onClick={() => setLang("te")}
-                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${
-                  lang === "te"
-                    ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
-                    : "text-[var(--maroon)] hover:bg-[var(--cream)]"
-                }`}
+                className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-display tracking-wider transition-all ${lang === "te"
+                  ? "bg-[var(--gold-deep)] text-[var(--ivory)] shadow"
+                  : "text-[var(--maroon)] hover:bg-[var(--cream)]"
+                  }`}
               >
                 తెలుగు
               </button>
@@ -545,12 +539,19 @@ export function Invitation() {
             <p className="font-script text-xl sm:text-2xl md:text-3xl text-gold-gradient font-semibold italic">
               Your presence is our blessing
             </p>
-            <a
-              href="tel:+919177064394"
-              className="inline-block font-display tracking-[0.3em] text-[10px] sm:text-xs mt-4 text-[var(--gold-deep)] hover:opacity-80 transition"
-            >
-              RSVP · +91 91770 64394
-            </a>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://wa.me/919177064394?text=Hello%2C%20I%20would%20like%20to%20RSVP%20for%20the%20Griha%20Pravesh%20ceremony%20on%20May%209th%2C%202026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-display tracking-[0.2em] text-xs sm:text-sm bg-[#25D366] text-white hover:opacity-90 transition shadow-lg hover:shadow-xl"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.988 1.51.986.986 0 00-.402 1.437l.589 1.566c.313.834 1.238 1.374 2.126 1.253a7.88 7.88 0 016.887-1.535c.84-.045 1.543-.688 1.544-1.532v-1.956a.987.987 0 00-.987-.987h-.001m11.051-3.972C19.588 2.849 15.856 1 12 1 5.925 1 .998 5.925.998 12S5.925 23 12 23c6.076 0 11.002-4.925 11.002-11 0-3.857-1.849-7.589-4.949-9.972z" />
+                </svg>
+                RSVP VIA WHATSAPP
+              </a>
+            </div>
           </footer>
         </>
       )}
