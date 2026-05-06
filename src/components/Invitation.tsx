@@ -46,11 +46,11 @@ const EN: CardContent = {
   invite:
     "With hearts full of gratitude and joy, we humbly invite you and your family to grace our new home with your divine presence and warm blessings on this auspicious occasion.",
   dateLabel: "DATE",
-  dateValue: "Saturday, 9th May",
-  dateSub: "Early Morning",
-  timeLabel: "TIME",
-  timeValue: "4:30 AM",
-  timeSub: "Brahma Muhūrta",
+  dateValue: "Friday, 9th May 2026",
+  dateSub: "Bahula Saptami",
+  timeLabel: "MUHURTHAM",
+  timeValue: "9:40 AM",
+  timeSub: "Auspicious Time",
   venueLabel: "VENUE",
   venueValue: "Sri Lakshmi Srinivasa Towers",
   venueSub: "Eluru, Andhra Pradesh",
@@ -65,6 +65,15 @@ const EN: CardContent = {
   family: "The Nadiminti Family",
   hosts: "Venkata Ramana & Satyavathi\nwith sons Sandeep Kumar, Avinash Naidu & Sarath Kumar",
   flipLabel: "తెలుగు",
+  panchangHeading: "✦ PANCHANGAM ✦",
+  panchang: [
+    { label: "Year", value: "Sri Vishvavasu Nama Samvatsaram" },
+    { label: "Month", value: "Vaishakha Masam" },
+    { label: "Tithi", value: "Bahula Saptami" },
+    { label: "Date", value: "09-05-2026" },
+    { label: "Day", value: "Friday" },
+    { label: "Muhurtham", value: "Morning 9:40 AM" },
+  ],
 };
 
 const TE: CardContent = {
