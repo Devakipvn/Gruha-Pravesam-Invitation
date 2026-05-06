@@ -425,7 +425,7 @@ export function Invitation() {
               >
                 <iframe
                   title="Venue location on Google Maps"
-                  src="https://www.google.com/maps?q=Sri+Lakshmi+Srinivasa+Towers,+Choudimella,+Eluru,+Andhra+Pradesh+534001&output=embed"
+                  src="https://maps.google.com/maps?q=16.7107,81.0952&z=17&output=embed"
                   width="100%"
                   height="380"
                   style={{ border: 0, display: "block" }}
