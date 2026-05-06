@@ -267,6 +267,7 @@ export function Invitation() {
   const [scrollY, setScrollY] = useState(0);
   const [lang, setLang] = useState<Lang>("en");
   const [envelopeOpened, setEnvelopeOpened] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
