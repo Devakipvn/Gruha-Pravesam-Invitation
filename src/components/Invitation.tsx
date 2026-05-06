@@ -54,9 +54,9 @@ const EN: CardContent = {
   venueSub: "Eluru, Andhra Pradesh",
   addressHeading: "✦ ADDRESS ✦",
   addressLines: [
+    "Flat No. 202,",
     "Sri Lakshmi Srinivasa Towers,",
-    "Sunkara Vaari Thota, Venkatapuram,",
-    "Venna Valli Vaari Peta, Choudimella,",
+    "Chataparru Road, Sunkara Vari Thota,",
     "Eluru – 534001, Andhra Pradesh",
   ],
   regards: "WITH WARM REGARDS",
@@ -83,9 +83,9 @@ const TE: CardContent = {
   venueSub: "ఏలూరు, ఆంధ్రప్రదేశ్",
   addressHeading: "✦ చిరునామా ✦",
   addressLines: [
+    "ఫ్లాట్ నం. 202,",
     "శ్రీ లక్ష్మీ శ్రీనివాస టవర్స్,",
-    "సుంకర వారి తోట, వెంకటాపురం,",
-    "వెన్నవల్లి వారి పేట, చౌడిమెల్ల,",
+    "చటపర్రు రోడ్, సుంకర వారి తోట,",
     "ఏలూరు – 534001, ఆంధ్రప్రదేశ్",
   ],
   regards: "ప్రేమపూర్వక నమస్కారములతో",
@@ -267,6 +267,7 @@ export function Invitation() {
   const [scrollY, setScrollY] = useState(0);
   const [lang, setLang] = useState<Lang>("en");
   const [envelopeOpened, setEnvelopeOpened] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -412,34 +413,55 @@ export function Invitation() {
               <p className="font-display tracking-[0.3em] text-[10px] sm:text-xs md:text-sm text-[var(--gold-deep)] mt-2">
                 LOCATION ON MAP
               </p>
-              <p className="font-body text-sm sm:text-base text-[var(--maroon)]/80 mt-4 max-w-xl mx-auto">
-                Sri Lakshmi Srinivasa Towers, Sunkara Vaari Thota, Venkatapuram,
-                Venna Valli Vaari Peta, Choudimella, Eluru – 534001, Andhra Pradesh
+              <p className="font-body text-sm sm:text-base text-[var(--maroon)]/80 mt-4 max-w-xl mx-auto leading-relaxed">
+                Flat No. 202, Sri Lakshmi Srinivasa Towers,<br />
+                Chataparru Road, Sunkara Vari Thota,<br />
+                Eluru – 534001, Andhra Pradesh
               </p>
             </Reveal>
 
-            <Reveal delay={150} className="max-w-4xl mx-auto">
+            <Reveal delay={150} className="max-w-4xl mx-auto px-1 sm:px-0">
               <div
-                className="rounded-2xl overflow-hidden"
+                className="relative rounded-2xl overflow-hidden"
                 style={{ border: "1px solid var(--gold)", boxShadow: "var(--shadow-card)" }}
               >
-                <iframe
-                  title="Venue location on Google Maps"
-                  src="https://maps.google.com/maps?q=16.7107,81.0952&z=17&output=embed"
-                  width="100%"
-                  height="380"
-                  style={{ border: 0, display: "block" }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
+                <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9]">
+                  {!mapLoaded && (
+                    <div
+                      className="absolute inset-0 animate-pulse flex items-center justify-center"
+                      style={{
+                        background:
+                          "linear-gradient(110deg, oklch(0.94 0.03 80) 20%, oklch(0.97 0.02 85) 40%, oklch(0.94 0.03 80) 60%)",
+                        backgroundSize: "200% 100%",
+                      }}
+                    >
+                      <div className="flex flex-col items-center gap-2 text-[var(--gold-deep)]">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="animate-spin">
+                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" opacity="0.25" />
+                          <path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                        <span className="font-display tracking-widest text-[10px] sm:text-xs">LOADING MAP…</span>
+                      </div>
+                    </div>
+                  )}
+                  <iframe
+                    title="Venue location on Google Maps"
+                    src="https://maps.google.com/maps?q=16.7107,81.0952&z=17&output=embed"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 0, display: "block" }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                    onLoad={() => setMapLoaded(true)}
+                  />
+                </div>
               </div>
               <div className="text-center mt-5">
                 <a
                   href="https://maps.app.goo.gl/RWrGVbsSt72BYpAGA?g_st=ic"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-6 py-2.5 rounded-full font-display tracking-widest text-xs sm:text-sm bg-[var(--gold-deep)] text-[var(--ivory)] shadow hover:opacity-90 transition"
+                  className="inline-block px-5 sm:px-6 py-2.5 rounded-full font-display tracking-widest text-xs sm:text-sm bg-[var(--gold-deep)] text-[var(--ivory)] shadow hover:opacity-90 transition"
                 >
                   GET DIRECTIONS →
                 </a>
