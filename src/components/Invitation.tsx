@@ -59,7 +59,7 @@ const EN: CardContent = {
   venueValue: "Sri Lakshmi Srinivasa Towers",
   venueSub: "Eluru, Andhra Pradesh",
   lunchLabel: "LUNCH",
-  lunchValue: "After the ceremony, please join us for lunch from 12 PM onwards 🍛✨",
+  lunchValue: "After the ceremony, please join us for lunch from 12 PM onwards",
   lunchSub: "Your presence will make our celebration even more special",
   addressHeading: "✦ ADDRESS ✦",
   addressLines: [
