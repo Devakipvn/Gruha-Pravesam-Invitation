@@ -1,76 +1,61 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-export function MusicToggle() {
-  const [playing, setPlaying] = useState(false);
+import backgroundMusic from "../Background_Bgm.mp3";
+
+export const MUSIC_START_EVENT = "invitation:play-music";
+
+interface MusicToggleProps {
+  autoPlay?: boolean;
+  audioSrc?: string;
+}
+
+export function MusicToggle({ autoPlay = false, audioSrc = backgroundMusic }: MusicToggleProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const autoPlayAttemptedRef = useRef(false);
 
   useEffect(() => {
-    // Generate a soft drone using Web Audio for ambient feel
+    // Initialize audio element
+    if (!audioRef.current) {
+      const audio = new Audio(audioSrc);
+      audio.loop = true;
+      audio.preload = "auto";
+      audio.volume = 0.35;
+      audioRef.current = audio;
+    }
+
     return () => {
-      audioRef.current?.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
     };
+  }, [audioSrc]);
+
+  useEffect(() => {
+    if (autoPlay && audioRef.current && !autoPlayAttemptedRef.current) {
+      autoPlayAttemptedRef.current = true;
+      audioRef.current
+        .play()
+        .catch((err) => {
+          console.error("Failed to auto-play music:", err);
+        });
+    }
+  }, [autoPlay]);
+
+  useEffect(() => {
+    const playMusic = () => {
+      if (!audioRef.current) return;
+
+      autoPlayAttemptedRef.current = true;
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch((err) => {
+        console.error("Failed to play music:", err);
+      });
+    };
+
+    window.addEventListener(MUSIC_START_EVENT, playMusic);
+    return () => window.removeEventListener(MUSIC_START_EVENT, playMusic);
   }, []);
 
-  const ctxRef = useRef<AudioContext | null>(null);
-  const nodesRef = useRef<{ osc: OscillatorNode; gain: GainNode }[]>([]);
-
-  const toggle = () => {
-    if (!playing) {
-      try {
-        const ctx = new (window.AudioContext ||
-          (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-        ctxRef.current = ctx;
-        // Tanpura-like drone — fundamental + fifth + octave
-        [196, 293.66, 392].forEach((freq) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = "sine";
-          osc.frequency.value = freq;
-          gain.gain.value = 0;
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start();
-          gain.gain.linearRampToValueAtTime(0.04, ctx.currentTime + 1.5);
-          nodesRef.current.push({ osc, gain });
-        });
-        setPlaying(true);
-      } catch {
-        /* silent */
-      }
-    } else {
-      const ctx = ctxRef.current;
-      if (ctx) {
-        nodesRef.current.forEach(({ osc, gain }) => {
-          gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.5);
-          setTimeout(() => {
-            try {
-              osc.stop();
-            } catch {
-              /* */
-            }
-          }, 600);
-        });
-        nodesRef.current = [];
-        setTimeout(() => ctx.close(), 800);
-      }
-      setPlaying(false);
-    }
-  };
-
-  return (
-    <button
-      onClick={toggle}
-      aria-label={playing ? "Pause music" : "Play music"}
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110"
-      style={{
-        background: "var(--gradient-gold)",
-        border: "2px solid var(--ivory)",
-        boxShadow: "var(--shadow-divine)",
-      }}
-    >
-      <span className="text-xl" style={{ color: "var(--maroon)" }}>
-        {playing ? "🔔" : "🔕"}
-      </span>
-    </button>
-  );
+  return null;
 }

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { CalendarDays, Clock, MapPin, Utensils } from "lucide-react";
 
 import { Particles } from "@/components/Particles";
 import { Reveal } from "@/components/Reveal";
 import { Envelope } from "@/components/Envelope";
 import { Typewriter } from "@/components/Typewriter";
 
-import { MusicToggle } from "@/components/MusicToggle";
+import { MUSIC_START_EVENT, MusicToggle } from "@/components/MusicToggle";
 import { HomamScene } from "@/components/HomamScene";
 import ganesha from "@/assets/ganesha.png";
 import rangoli from "@/assets/rangoli.png";
@@ -28,6 +29,9 @@ interface CardContent {
   venueLabel: string;
   venueValue: string;
   venueSub: string;
+  lunchLabel: string;
+  lunchValue: string;
+  lunchSub: string;
   addressHeading: string;
   addressLines: string[];
   regards: string;
@@ -54,6 +58,9 @@ const EN: CardContent = {
   venueLabel: "VENUE",
   venueValue: "Sri Lakshmi Srinivasa Towers",
   venueSub: "Eluru, Andhra Pradesh",
+  lunchLabel: "LUNCH",
+  lunchValue: "After the ceremony, please join us for lunch from 12 PM onwards 🍛✨",
+  lunchSub: "Your presence will make our celebration even more special",
   addressHeading: "✦ ADDRESS ✦",
   addressLines: [
     "Flat No. 202,",
@@ -63,7 +70,7 @@ const EN: CardContent = {
   ],
   regards: "WITH WARM REGARDS",
   family: "The Nadiminti Family",
-  hosts: "Venkata Ramana & Satyavathi\nwith sons Sandeep Kumar, Avinash Naidu & Sarath Kumar",
+  hosts: "Venkata Ramana & Satyavathi\nwith sons Sandeep Kumar,  Bala Avinash Kumar & Sarath Kumar",
   flipLabel: "తెలుగు",
   panchangHeading: "✦ PANCHANGAM ✦",
   panchang: [
@@ -92,6 +99,9 @@ const TE: CardContent = {
   venueLabel: "వేదిక",
   venueValue: "శ్రీ లక్ష్మీ శ్రీనివాస టవర్స్",
   venueSub: "ఏలూరు, ఆంధ్రప్రదేశ్",
+  lunchLabel: "విందు",
+  lunchValue: "కార్యక్రమం అనంతరం మధ్యాహ్నం 12 గంటల నుండి భోజన ఏర్పాట్లు ఉన్నాయి..",
+  lunchSub: "మీ ఆత్మీయ సమక్షం మా ఆనందాన్ని మరింత ప్రత్యేకంగా మారుస్తుంది.",
   addressHeading: "✦ చిరునామా ✦",
   addressLines: [
     "ఫ్లాట్ నం. 202,",
@@ -100,8 +110,8 @@ const TE: CardContent = {
     "ఏలూరు – 534001, ఆంధ్రప్రదేశ్",
   ],
   regards: "ప్రేమపూర్వక నమస్కారములతో",
-  family: "నాదిమింటి కుటుంబం",
-  hosts: "వెంకట రమణ & సత్యవతి\nకుమారులు సందీప్ కుమార్, అవినాష్ నాయుడు & శరత్ కుమార్",
+  family: "నడిమింటి కుటుంబం",
+  hosts: "వెంకట రమణ & సత్యవతి\nకుమారులు సందీప్ కుమార్,  బాల అవినాష్ కుమార్ & శరత్ కుమార్",
   flipLabel: "English",
   panchangHeading: "✦ పంచాంగం ✦",
   panchang: [
@@ -113,6 +123,21 @@ const TE: CardContent = {
     { label: "శుభ ముహూర్తం", value: "ఉదయం 9 గంటల 40 నిమిషాలకు" },
   ],
 };
+
+const CARD_SPARKLES = [
+  { left: "9%", top: "11%", size: 4, delay: "0s", duration: "7s" },
+  { left: "18%", top: "35%", size: 3, delay: "1.2s", duration: "8s" },
+  { left: "29%", top: "18%", size: 5, delay: "2.1s", duration: "9s" },
+  { left: "41%", top: "48%", size: 3, delay: "0.7s", duration: "7.5s" },
+  { left: "53%", top: "27%", size: 4, delay: "1.8s", duration: "8.5s" },
+  { left: "64%", top: "61%", size: 5, delay: "2.8s", duration: "9.5s" },
+  { left: "72%", top: "16%", size: 3, delay: "0.4s", duration: "7.8s" },
+  { left: "84%", top: "38%", size: 4, delay: "1.5s", duration: "8.2s" },
+  { left: "91%", top: "68%", size: 3, delay: "2.4s", duration: "9s" },
+  { left: "13%", top: "79%", size: 5, delay: "3s", duration: "10s" },
+  { left: "37%", top: "88%", size: 3, delay: "1s", duration: "8.8s" },
+  { left: "77%", top: "84%", size: 4, delay: "2s", duration: "9.2s" },
+];
 
 function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
   const isTe = lang === "te";
@@ -137,6 +162,23 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
         className="absolute inset-5 rounded-[1.5rem] pointer-events-none"
         style={{ border: "1px solid var(--gold)", opacity: 0.25 }}
       />
+
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        {CARD_SPARKLES.map((sparkle, index) => (
+          <span
+            key={index}
+            className="card-sparkle"
+            style={{
+              left: sparkle.left,
+              top: sparkle.top,
+              width: `${sparkle.size}px`,
+              height: `${sparkle.size}px`,
+              animationDelay: sparkle.delay,
+              animationDuration: sparkle.duration,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Corner ornaments */}
       {(["top-3 left-3", "top-3 right-3", "bottom-3 left-3", "bottom-3 right-3"] as const).map((pos) => (
@@ -202,38 +244,47 @@ function CardFace({ c, lang }: { c: CardContent; lang: Lang }) {
       </div>
 
       {/* Event Details */}
-      <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+      <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
         {[
-          { label: c.dateLabel, value: c.dateValue, sub: c.dateSub, icon: "❖" },
-          { label: c.timeLabel, value: c.timeValue, sub: c.timeSub, icon: "✶" },
-          { label: c.venueLabel, value: c.venueValue, sub: c.venueSub, icon: "❋" },
-        ].map((d, i) => (
-          <div
-            key={i}
-            className="rounded-2xl p-5 md:p-6 transition-all duration-300 hover:-translate-y-1"
-            style={{
-              background: "linear-gradient(160deg, var(--ivory), oklch(0.96 0.03 80))",
-              border: "1px solid var(--gold)",
-              boxShadow: "0 10px 24px -12px oklch(0.55 0.14 65 / 0.35)",
-            }}
-          >
-            <p className="text-[var(--gold-deep)] text-base">{d.icon}</p>
-            <p
-              className="font-body text-[10px] sm:text-[11px] tracking-[0.35em] text-[var(--gold-deep)] mt-2 uppercase"
-              style={{ fontWeight: 600 }}
+          { label: c.dateLabel, value: c.dateValue, sub: c.dateSub, icon: CalendarDays },
+          { label: c.timeLabel, value: c.timeValue, sub: c.timeSub, icon: Clock },
+          { label: c.venueLabel, value: c.venueValue, sub: c.venueSub, icon: MapPin },
+          { label: c.lunchLabel, value: c.lunchValue, sub: c.lunchSub, icon: Utensils },
+        ].map((d, i) => {
+          const isLunch = i === 3;
+
+          return (
+            <div
+              key={i}
+              className="rounded-2xl p-5 sm:p-6 lg:p-7 min-h-[13.5rem] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background: "linear-gradient(160deg, var(--ivory), oklch(0.96 0.03 80))",
+                border: "1px solid var(--gold)",
+                boxShadow: "0 10px 24px -12px oklch(0.55 0.14 65 / 0.35)",
+              }}
             >
-              {d.label}
-            </p>
-            <p className={`${teFont} text-base sm:text-lg md:text-xl mt-3 text-[var(--maroon)] leading-tight`}
-              style={!isTe ? { fontFamily: "var(--font-display)", fontWeight: 700, letterSpacing: "0.04em" } : { fontWeight: 600 }}
-            >
-              {d.value}
-            </p>
-            <p className={`${teFont} font-body italic text-xs sm:text-sm text-[var(--maroon)]/65 mt-1.5`}>
-              {d.sub}
-            </p>
-          </div>
-        ))}
+              <d.icon
+                aria-hidden="true"
+                className="h-6 w-6 text-[var(--gold-deep)]"
+                strokeWidth={1.8}
+              />
+              <p
+                className="font-body text-[10px] sm:text-[11px] tracking-[0.35em] text-[var(--gold-deep)] mt-2 uppercase"
+                style={{ fontWeight: 600 }}
+              >
+                {d.label}
+              </p>
+              <p className={`${teFont} ${isLunch ? "text-sm sm:text-base md:text-lg leading-relaxed" : "text-base sm:text-lg md:text-xl leading-tight"} mt-3 text-[var(--maroon)]`}
+                style={!isTe ? { fontFamily: "var(--font-display)", fontWeight: 700, letterSpacing: "0.04em" } : { fontWeight: 600 }}
+              >
+                {d.value}
+              </p>
+              <p className={`${teFont} font-body italic ${isLunch ? "text-[11px] sm:text-xs md:text-sm leading-relaxed" : "text-xs sm:text-sm"} text-[var(--maroon)]/65 mt-1.5`}>
+                {d.sub}
+              </p>
+            </div>
+          );
+        })}
       </div>
 
       {/* Address */}
@@ -330,7 +381,9 @@ export function Invitation() {
   const isFlipped = lang === "te";
 
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden">
+      <MusicToggle />
+
       {/* ENVELOPE ENTRY — full screen until opened */}
       {!envelopeOpened && (
         <div
@@ -341,7 +394,10 @@ export function Invitation() {
           }}
         >
           <div className="w-full max-w-sm sm:max-w-md md:max-w-lg">
-            <Envelope onOpen={() => setEnvelopeOpened(true)}>
+            <Envelope
+              onOpening={() => window.dispatchEvent(new Event(MUSIC_START_EVENT))}
+              onOpen={() => setEnvelopeOpened(true)}
+            >
               <div />
             </Envelope>
           </div>
@@ -350,8 +406,7 @@ export function Invitation() {
 
       {envelopeOpened && (
         <>
-          <Particles count={22} />
-          <MusicToggle />
+          <Particles count={34} />
 
           <div
             className="fixed inset-0 pointer-events-none -z-10 flex items-center justify-center opacity-[0.07]"
@@ -393,7 +448,7 @@ export function Invitation() {
           </section>
 
           {/* INVITATION CARD */}
-          <section className="min-h-screen flex flex-col items-center justify-start sm:justify-center px-3 sm:px-4 pt-8 pb-10 sm:py-16 md:py-20 relative">
+          <section className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col items-center justify-start sm:justify-center px-3 sm:px-4 pt-8 pb-10 sm:py-16 md:py-20 relative">
             {/* Language toggle */}
             <div className="mb-8 flex items-center gap-2 bg-[var(--ivory)] rounded-full p-1.5 border border-[var(--gold)] shadow-md fade-up" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
               <button
@@ -416,7 +471,7 @@ export function Invitation() {
               </button>
             </div>
 
-            <Reveal className="w-full max-w-3xl flip-perspective">
+            <Reveal className="w-full max-w-[min(72rem,calc(100vw-1.5rem))] sm:max-w-[min(72rem,calc(100vw-2rem))] flip-perspective">
               <div className={`flip-inner ${isFlipped ? "is-flipped" : ""}`}>
                 <div className="flip-face">
                   <CardFace c={EN} lang="en" />
@@ -541,15 +596,15 @@ export function Invitation() {
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/919177064394?text=Hello%2C%20I%20would%20like%20to%20RSVP%20for%20the%20Griha%20Pravesh%20ceremony%20on%20May%209th%2C%202026"
+                href="https://wa.me/919177064394?text=Hi%21%20 %20I%27m%20happy%20to%20confirm%20that%20I%27ll%20be%20attending%20the%20Gruhapravesham%20celebration.%20Looking%20forward%20to%20it..%21%20"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-display tracking-[0.2em] text-xs sm:text-sm bg-[#25D366] text-white hover:opacity-90 transition shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-display tracking-[0.2em] text-xs sm:text-sm bg-[#8b1e3f] text-white hover:opacity-90 transition shadow-lg hover:shadow-xl"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.988 1.51.986.986 0 00-.402 1.437l.589 1.566c.313.834 1.238 1.374 2.126 1.253a7.88 7.88 0 016.887-1.535c.84-.045 1.543-.688 1.544-1.532v-1.956a.987.987 0 00-.987-.987h-.001m11.051-3.972C19.588 2.849 15.856 1 12 1 5.925 1 .998 5.925.998 12S5.925 23 12 23c6.076 0 11.002-4.925 11.002-11 0-3.857-1.849-7.589-4.949-9.972z" />
                 </svg>
-                RSVP VIA WHATSAPP
+                <b>Join Us 🤍</b>
               </a>
             </div>
           </footer>

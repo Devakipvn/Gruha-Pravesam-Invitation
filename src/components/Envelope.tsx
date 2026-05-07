@@ -3,14 +3,16 @@ import { useState } from "react";
 interface EnvelopeProps {
   children: React.ReactNode;
   onOpen: () => void;
+  onOpening?: () => void;
 }
 
-export function Envelope({ children, onOpen }: EnvelopeProps) {
+export function Envelope({ children, onOpen, onOpening }: EnvelopeProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [fullyOpen, setFullyOpen] = useState(false);
 
   const handleOpen = () => {
     if (isOpen) return;
+    onOpening?.();
     setIsOpen(true);
     setTimeout(() => {
       setFullyOpen(true);
