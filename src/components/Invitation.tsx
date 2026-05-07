@@ -50,7 +50,7 @@ const EN: CardContent = {
   invite:
     "With hearts full of gratitude and joy, we humbly invite you and your family to grace our new home with your divine presence and warm blessings on this auspicious occasion.",
   dateLabel: "DATE",
-  dateValue: "Friday, 9th May 2026",
+  dateValue: "Saturday, 9th May 2026",
   dateSub: "Bahula Saptami",
   timeLabel: "MUHURTHAM",
   timeValue: "9:40 AM",
