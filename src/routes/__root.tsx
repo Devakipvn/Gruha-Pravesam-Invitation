@@ -30,13 +30,15 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Gṛha Praveśa · House Warming Invitation" },
-      { name: "description", content: "An interactive Griha Pravesh invitation website with animated doors and elegant Indian traditional design." },
+      { name: "description", content: "An interactive Griha Pravesh invitation website with animated Invitation and elegant Indian traditional design." },
       { property: "og:title", content: "Gṛha Praveśa · House Warming Invitation" },
-      { property: "og:description", content: "An interactive Griha Pravesh invitation website with animated doors and elegant Indian traditional design." },
+      { property: "og:description", content: "An interactive Griha Pravesh invitation website with animated Invitation and elegant Indian traditional design." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Gṛha Praveśa · House Warming Invitation" },
-      { name: "twitter:description", content: "An interactive Griha Pravesh invitation website with animated doors and elegant Indian traditional design." },
+      { name: "twitter:description", content: "An interactive Griha Pravesh invitation website with animated Invitation and elegant Indian traditional design." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cbcd8436-d40b-4653-8f53-35bdf843d985/id-preview-408a88d9--85b8695f-6739-46d8-a1b9-718203495bd6.lovable.app-1778139817470.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cbcd8436-d40b-4653-8f53-35bdf843d985/id-preview-408a88d9--85b8695f-6739-46d8-a1b9-718203495bd6.lovable.app-1778139817470.png" },
     ],
     links: [
       {
