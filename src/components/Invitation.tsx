@@ -78,7 +78,7 @@ const EN: CardContent = {
     { label: "Month", value: "Vaishakha Masam" },
     { label: "Tithi", value: "Bahula Saptami" },
     { label: "Date", value: "09-05-2026" },
-    { label: "Day", value: "Friday" },
+    { label: "Day", value: "Saturday" },
     { label: "Muhurtham", value: "Morning 9:40 AM" },
   ],
 };
@@ -91,7 +91,7 @@ const TE: CardContent = {
   invite:
     "ఎంతో ఆనందంతో మరియు భక్తి పూర్వకంగా, మా క్రొత్త ఇంటి గృహప్రవేశ శుభ సందర్భమున మీరు మీ కుటుంబ సమేతంగా విచ్చేసి మమ్మల్ని ఆశీర్వదించవలసిందిగా హృదయపూర్వకంగా ఆహ్వానిస్తున్నాము.",
   dateLabel: "తేదీ",
-  dateValue: "శుక్రవారం, మే 9, 2026",
+  dateValue: "శనివారం, మే 9, 2026",
   dateSub: "బహుళ సప్తమి",
   timeLabel: "ముహూర్తం",
   timeValue: "ఉదయం 9:40",
@@ -119,7 +119,7 @@ const TE: CardContent = {
     { label: "మాసం", value: "వైశాఖ మాసం" },
     { label: "తిథి", value: "బహుళ సప్తమి" },
     { label: "తేదీ", value: "09-05-2026" },
-    { label: "వారము", value: "శుక్రవారం" },
+    { label: "వారము", value: "శనివారం" },
     { label: "శుభ ముహూర్తం", value: "ఉదయం 9 గంటల 40 నిమిషాలకు" },
   ],
 };
